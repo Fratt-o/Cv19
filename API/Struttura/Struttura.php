@@ -23,7 +23,7 @@ class Struttura
 	$this->conn = $db;
 	}
     
-	
+	//Ciao dado
 	
 	/*
 	
