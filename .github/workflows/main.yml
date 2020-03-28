@@ -16,4 +16,4 @@ jobs:
         ftp-server: ftp://ftp.cv19ing20.altervista.org/Repository
         ftp-username: cv19ing20
         ftp-password: CuYSm5BHW735
-      git-ftp-args: --insecure
+        git-ftp-args: --insecure
