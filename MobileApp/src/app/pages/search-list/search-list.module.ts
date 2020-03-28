@@ -11,6 +11,7 @@ import { StructureDetailComponent } from '../structure-detail/structure-detail.c
 import {ModalLoginComponent} from '../../shared/component/modalLogin/modalLogin.component';
 import {ModalFiltersComponent} from '../filters/modalFilters/modalFilters.component';
 import {FiltersComponent} from '../filters/filters.component';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {FiltersComponent} from '../filters/filters.component';
     FormsModule,
     IonicModule,
     SearchListPageRoutingModule,
-    // SharedModule
+    SharedModule
   ],
   entryComponents: [FiltersComponent],
   declarations: [SearchListPage, StructureDetailComponent, ModalLoginComponent, ModalFiltersComponent, FiltersComponent]
