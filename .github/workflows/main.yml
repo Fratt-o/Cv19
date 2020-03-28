@@ -13,6 +13,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        ftp-server: "ftp://ftp.cv19ing20.altervista.org/Repository"
-        ftp-username: "cv19ing20"
-        ftp-password: "CuYSm5BHW735"
+        ftp-server: ftp://ftp.cv19ing20.altervista.org/Repository
+        ftp-username: cv19ing20
+        ftp-password: CuYSm5BHW735
+      git-ftp-args: --insecure
