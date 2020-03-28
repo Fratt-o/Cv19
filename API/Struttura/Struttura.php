@@ -53,7 +53,7 @@ class Struttura
 			$where .= " AND categoria = '$filter->categoria' ";
 		}
 		
-		if(isset($filter->caratteristiche)) {
+		if(isset($filter->caratteristiche) && count($filter->caratteristiche) > 0) {
 			$join .= " JOIN StrutturaCaratteristiche sc on s.idstruttura = sc.fkstruttura "; 
 			$caratteristiche = implode(',', $filter->caratteristiche);
 			$where .= " AND sc.fkcaratteristica in ($caratteristiche)";
