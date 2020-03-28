@@ -1,0 +1,6 @@
+<ion-button *ngIf="!authService.isAuthenticated()" (click)="showModal()" size="small" class="accessButton" >
+    Accedi
+</ion-button>
+<span *ngIf="authService.isAuthenticated()">
+    {{authService.getUsername()}}
+</span>

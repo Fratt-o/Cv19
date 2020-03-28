@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="toolbarMain">
+    <modalLogin slot="end" class="modal-card"></modalLogin>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar debounce="500" #input (ionChange)="cercaLuogo(input.value)"></ion-searchbar>
+  <div *ngIf="tuttiLuoghi">
+    <modalFilters (confirm)="retrieveOnFilter($event)"></modalFilters>
+    <ion-list >
+      <ion-list-header>
+        <ion-text>
+          <p>Cerca i luoghi che desideri!</p>
+        </ion-text>
+      </ion-list-header>
+
+      <ion-item *ngFor="let luogo of luoghiMostrati" (click)="goToStructureDetail(luogo.id)">
+        <ion-avatar slot="start">
+          <img src="{{luogo.image}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{luogo.name}}</h2>
+          <h3>{{luogo.rating}}</h3>
+          <p>{{luogo.type}}</p>
+          <p>{{luogo.address}}, {{luogo.city}}, {{luogo.province}}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+      <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="Caricamento in corso...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+
+

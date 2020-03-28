@@ -1,0 +1,20 @@
+<ion-content>
+<ion-segment color="primary" (ionChange)="impostaCategoria($event)" [value]="categoria">
+  <ion-segment-button *ngFor="let categoria of categorie" [value]="categoria.label">
+    <ion-label>{{categoria.label}}</ion-label>
+    <ion-icon [name]="categoria.icon"></ion-icon>
+  </ion-segment-button>
+</ion-segment>
+
+
+  <ion-list>
+    <ion-list-header>Preferenze</ion-list-header>
+    <ion-item *ngFor="let caratt of caratteristiche">
+      <ion-label>{{caratt.nomecaratteristica}}</ion-label>
+      <ion-checkbox  [checked]="isInCaratteristicheSelezionate(caratt.idcaratteristica)" (ionChange)="toggleCaratteristica($event, caratt.idcaratteristica)"  color="primary" slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+    <ion-button type="button" expand="block" color="secondary" (click)="resetFilters()">Reset</ion-button>
+    <ion-button type="submit" expand="block" color="primary" (click)="sendFilters()">Conferma</ion-button>
+
+</ion-content>

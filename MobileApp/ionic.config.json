@@ -1,0 +1,7 @@
+{
+  "name": "ConsigliaViaggi1920",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

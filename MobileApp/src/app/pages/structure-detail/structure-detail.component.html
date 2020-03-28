@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar class="toolbarMain">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref=""></ion-back-button>
+        </ion-buttons>
+        <modalLogin slot="end" class="modal-card"></modalLogin>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>
+                {{structure?.name}}
+            </ion-card-title>
+            <ion-card-subtitle>
+                {{structure?.type}}
+            </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+            <img class="image" src="{{structure?.image}}">
+        </ion-card-content>
+        <ion-card-content class="contacts">
+            <ion-icon name="call-outline"></ion-icon>
+            <ion-label>
+                {{structure?.phone}}
+            </ion-label>
+        </ion-card-content>
+        <ion-card-content class="contacts">
+            <ion-icon name="mail-outline"></ion-icon>
+            <ion-label>
+                {{structure?.email}}
+            </ion-label>
+        </ion-card-content>
+        <ion-card-content class="contacts">
+            <ion-icon name="location-outline"></ion-icon>
+            <ion-label>
+                {{structure?.address}},{{structure?.city}},{{structure?.province}},{{structure?.cap}}
+            </ion-label>
+        </ion-card-content>
+
+        <ion-card-content class="ion-text-wrap">
+            {{structure?.description}}
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-list >
+            <ion-list-header>Recensioni</ion-list-header>
+            <ion-item *ngFor="let recensione of structure?.reviews">
+                <ion-avatar slot="start">
+                    <img src="{{recensione.avatar}}">
+                </ion-avatar>
+                <ion-label class="ion-text-wrap">
+                    <h2>{{recensione.name}}</h2>
+                    <h3>{{recensione.rating}}</h3>
+                    <p>{{recensione.text}}</p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card >
+        <ion-card-title>Vuoi lasciare una recensione?</ion-card-title>
+            <modalLogin *ngIf="!authService.isAuthenticated()">Accedi</modalLogin>
+            <ion-textarea *ngIf="authService.isAuthenticated()"></ion-textarea>
+    </ion-card>

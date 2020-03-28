@@ -1,0 +1,31 @@
+<ion-content class="loginBlock">
+  <form #form="ngForm" (ngSubmit)="register(form)" method="post">
+    <ion-item>
+      <ion-label position="floating" required="true">Nome</ion-label>
+      <ion-input ngModel type="name" name="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" required="true">Cognome</ion-label>
+      <ion-input ngModel type="surname" name="surname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" required="true">E-mail</ion-label>
+      <ion-input ngModel type="email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" required="true">Password</ion-label>
+      <ion-input ngModel type="password" name="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" required="true">Username</ion-label>
+      <ion-input ngModel type="username" name="username"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Conferma</ion-button>
+  </form>
+  <div color="danger" *ngIf="error">Registrazione fallita</div>
+</ion-content>
