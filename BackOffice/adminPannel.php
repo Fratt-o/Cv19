@@ -39,6 +39,12 @@
               color : #007bff;
           }
       </style>
+      <?php 
+        session_start();
+        if($_SESSION['username']==null){
+            http_response_code(404);
+        }
+      ?>
       <div class="container contenitore">
        
             <nav class="navbar navbar-light ">
@@ -47,7 +53,7 @@
                     <div class="dropdown">
                         
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Benvenuto, Fratto
+                            Benvenuto, <?php echo $_SESSION['username'];?>
                         </button>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
