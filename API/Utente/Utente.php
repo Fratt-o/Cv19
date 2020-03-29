@@ -17,6 +17,17 @@ class Utente {
     public function __construct($db){
         $this->conn = $db;
     }
+    function isAdmin($user){
+        
+        $query="SELECT username FROM Utente WHERE isAdmin=1	 AND email=:email AND password = :password ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':email',$user['email']);
+        $stmt->bindParam(':password',$user['psw']);
+        echo $query;
+        echo "\n";
+        return $stmt->execute();
+    }
+
     
     function read(){
         

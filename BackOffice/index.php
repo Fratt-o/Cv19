@@ -61,12 +61,12 @@ and open the template in the editor.
                        
                         <h5 class="card-title ">Benvenuto nel area amministrazione di CV19</h5>
                   
-                        <form>
+                        <form method="post" action="http://cv19ing20.altervista.org/Database/CSV19/Utente/adminloginController.php">
                         
                             <div class="form-group">
                                 
                                 <label for="exampleInputEmail1">Indirizzo Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                                 <small id="emailHelp" class="form-text text-muted"></small>
                             
                             </div>
@@ -74,7 +74,7 @@ and open the template in the editor.
                             <div class="form-group">
                             
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control " id="exampleInputPassword1" required>
+                                <input type="password" name="psw" class="form-control " id="exampleInputPassword1" required>
                             
                             </div>
                             
