@@ -59,7 +59,7 @@ and open the template in the editor.
                    
                   <div class="card-body ">
                        
-                        <h5 class="card-title ">Benvenuto nel area di amministrazione di CV19</h5>
+                        <h5 class="card-title ">Benvenuto nel area amministrazione di CV19</h5>
                   
                         <form>
                         
