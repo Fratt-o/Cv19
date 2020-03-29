@@ -15,9 +15,9 @@
       </ion-list-header>
 
       <ion-item *ngFor="let luogo of luoghiMostrati" (click)="goToStructureDetail(luogo.id)">
-        <ion-avatar slot="start">
+        <ion-thumbnail slot="start">
           <img src="{{luogo.image}}">
-        </ion-avatar>
+        </ion-thumbnail>
         <ion-label>
           <h2>{{luogo.name}}</h2>
           <h3>{{luogo.rating}}</h3>
