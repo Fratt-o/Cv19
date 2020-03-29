@@ -25,7 +25,7 @@ $db = $db->getConnection();
 
 if (is_null($db))
 {
-    http_response("502");
+    http_response_code("502");
 }
 // instantiate user object
 $user = new Utente($db);

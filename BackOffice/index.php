@@ -65,16 +65,16 @@ and open the template in the editor.
                         
                             <div class="form-group">
                                 
-                                <label for="exampleInputEmail1">Indirizzo Email</label>
-                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                <label for="email">Indirizzo Email</label>
+                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
                                 <small id="emailHelp" class="form-text text-muted"></small>
                             
                             </div>
                             
                             <div class="form-group">
                             
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" name="psw" class="form-control " id="exampleInputPassword1" required>
+                                <label for="psw">Password</label>
+                                <input type="password" name="psw" class="form-control " id="psw" required>
                             
                             </div>
                             

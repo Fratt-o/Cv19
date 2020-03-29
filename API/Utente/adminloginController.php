@@ -9,33 +9,25 @@
 		http_response_code(503);
 		echo "Errore di Connessione al BD";
 	}
-	try {
-		$user['email']=filter_input($_POST['email'],FILTER_VALIDATE_EMAIL);
-		$user['psw']=filter_input($_POST['psw'],FILTER_DEFAULT);
-		if(empty($user['email'])&& empty($user['psw'])){
-			http_response_code(400);
-			echo "Errore valori non inizializzati";
-		}
-	} catch (Exception $E){
-		http_response_code(403);
-		echo "Errore Forbidden Data";
-	}
 
 	try{
+		$user['email']=$_POST['email'];
+		$user['psw']=$_POST['psw'];
+	
 		$utente = new Utente($db);
-		$user['psw']=password_hash($user['psw'],PASSWORD_DEFAULT);
-		$result = $utente->isAdmin($user);
-		if($result->rowCount() > 0){
+		
+		$result = $utente->isAdmin($user['email']);
+		if($result == true  && password_verify($user['psw'],$utente->password)){
 			
-			$row= $result->fetch_assoc();
+			
 			if(!session_id()) session_start();
 			
-			$_SESSION['username']= $row['username'];
+			$_SESSION['username']= $utente->username;
 			header("Location: http://cv19ing20.altervista.org/BackOffice/adminPannel.php");
 
 		} else {
 			http_response_code(403);
-			echo "invalid Param";
+			echo "Non c'è un account";
 		}
 	}catch(Exception $E){
 		http_response_code(500);

@@ -17,15 +17,28 @@ class Utente {
     public function __construct($db){
         $this->conn = $db;
     }
-    function isAdmin($user){
-        
-        $query="SELECT username FROM Utente WHERE isAdmin=1	 AND email=:email AND password = :password ";
+    function isAdmin($email){
+
+        $query="SELECT username,password FROM Utente WHERE isAdmin=1 AND email='".$email."'";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':email',$user['email']);
-        $stmt->bindParam(':password',$user['psw']);
+
+        $stmt->execute();
         echo $query;
-        echo "\n";
-        return $stmt->execute();
+        $num = $stmt->rowCount();
+        if($num>0){
+	 
+			// get record details / values
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	 
+			// assign values to object properties
+			$this->username = $row['username'];
+			$this->password = $row['password'];
+	 
+            // return true because email exists in the database
+            
+			return true;
+		}
+        return false;
     }
 
     
