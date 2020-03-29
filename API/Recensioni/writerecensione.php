@@ -18,12 +18,12 @@ include '../config/databaseconnect.php';
 require 'Recensioni.php';
 
 // get database connection
-$db = new Database();
-$db = $db->getConnection();
-
-if (is_null($db))
-{
-    http_response("502");
+try{
+    $db = new Database();
+    $db = $db->getConnection();
+}catch(Exception $E){
+    http_response_code("502");
+    echo json_encode(array("message"=>"errore connessione al db"));
 }
 // instantiate user object
 $recensioni = new Recensioni($db);
@@ -65,15 +65,20 @@ if (strlen($review->titolo)>2 && strlen($review->titolo)<50 && strlen($review->t
     http_response_code(200);
     
     // generate jwt
-    $result=$recensioni->create($review);
-    $jwt = JWT::encode($token, $key);
-    echo json_encode(
-            array(
-                "message" => "Recensione inviata, in attesa di conferma.",
-                "jwt" => $jwt,
-                "risultato" => $result
-            )
-        );
+    try{ 
+        $result=$recensioni->create($review);
+        $jwt = JWT::encode($token, $key);
+        echo json_encode(
+                array(
+                 "message" => "Recensione inviata, in attesa di conferma.",
+                 "jwt" => $jwt,
+                 "risultato" => $result
+             )
+            );
+        }catch(Exception $E){
+            http_response_code(400);
+            echo json_encode(array("message "=> "errore nella creazione della recensione"));
+        }
     
     
     
