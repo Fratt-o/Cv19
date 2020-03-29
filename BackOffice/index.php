@@ -61,7 +61,7 @@ and open the template in the editor.
                        
                         <h5 class="card-title ">Benvenuto nel area amministrazione di CV19</h5>
                   
-                        <form method="post" action="http://cv19ing20.altervista.org/Database/CSV19/Utente/adminloginController.php">
+                        <form method="post" action="http://cv19ing20.altervista.org/Cv19/API/Utente/adminloginController.php">
                         
                             <div class="form-group">
                                 

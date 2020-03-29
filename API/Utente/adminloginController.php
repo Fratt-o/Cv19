@@ -23,7 +23,7 @@
 			if(!session_id()) session_start();
 			
 			$_SESSION['username']= $utente->username;
-			header("Location: http://cv19ing20.altervista.org/BackOffice/adminPannel.php");
+			header("Location: http://cv19ing20.altervista.org/Cv19/BackOffice/adminPannel.php");
 
 		} else {
 			http_response_code(403);
