@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { Structure } from '../../models/structure';
 import {IonInfiniteScroll} from '@ionic/angular';
 import {environment} from '../../../environments/environment';
+import {FilterService} from '../filters/filter.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class SearchListPage implements OnInit {
   currentPage = 0;
 
   constructor(private rtrService: RetrieverService,
-              private router: Router) { }
+              private router: Router, private filterService: FilterService) { }
 
   ngOnInit() {
     this.retriveMoreAttractions(environment.numAttractionsToRetrieve, this.currentPage).subscribe((luoghi) => {
@@ -45,7 +46,8 @@ export class SearchListPage implements OnInit {
     }
     this.currentPage++;
 
-    this.retriveMoreAttractions(environment.numAttractionsToRetrieve, this.currentPage).subscribe((luoghi) => {
+    const filter = this.filterService.getFilter();
+    this.retriveMoreAttractions(environment.numAttractionsToRetrieve, this.currentPage, filter).subscribe((luoghi) => {
       event.target.complete();
       this.luoghiMostrati.push(...luoghi);
 
@@ -53,17 +55,6 @@ export class SearchListPage implements OnInit {
         event.target.disabled = true;
       }
     });
-    /*
-    setTimeout(() => {
-
-
-
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      if (this.luoghiMostrati.length === this.tuttiLuoghi.length) {
-        event.target.disabled = true;
-      }
-    }, 500);*/
   }
 
   toggleInfiniteScroll() {

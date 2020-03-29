@@ -1,7 +1,7 @@
 import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {ModalController, NavController} from '@ionic/angular';
 import {NgForm} from '@angular/forms';
-import {EnumCategorie, FilterModel, TipoCategoria} from '../../services/retriever.service';
+import {Caratteristica, EnumCategorie, FilterModel, RetrieverService, TipoCategoria} from '../../services/retriever.service';
 import {FilterService} from './filter.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class FiltersComponent implements OnInit{
 
   categoria: TipoCategoria;
   categoriaSelezionata: any;
-  caratteristiche: {idcaratteristica: number, nomecaratteristica: string}[];
+  caratteristiche: Caratteristica[];
   caratteristicheSelezionate: number[] = [];
   categorie = [
     {
@@ -32,34 +32,15 @@ export class FiltersComponent implements OnInit{
 
   constructor(private modalController: ModalController,
               private navCtrl: NavController,
-              private filterService: FilterService) {
-
-    this.caratteristiche = [
-      {
-        idcaratteristica: 1,
-        nomecaratteristica: 'Fumo'
-      },
-      {
-        idcaratteristica: 2,
-        nomecaratteristica: 'WiFi'
-      },
-      {
-        idcaratteristica: 3,
-        nomecaratteristica: 'Parcheggio'
-      },
-      {
-        idcaratteristica: 4,
-        nomecaratteristica: 'Animali'
-      },
-      {
-        idcaratteristica: 5,
-        nomecaratteristica: 'Bambini'
-      }
-    ];
-
-  }
+              private filterService: FilterService,
+              private rtrService: RetrieverService) {}
 
   ngOnInit(): void {
+    this.rtrService.getCaratteristiche().subscribe((caratteristiche) => {
+      this.caratteristiche = caratteristiche;
+    });
+
+
     if (this.filterService.hasFilter()) {
       const filter = this.filterService.getFilter();
       this.categoria = filter.categoria;

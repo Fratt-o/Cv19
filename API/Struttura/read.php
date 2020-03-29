@@ -67,7 +67,7 @@ if(!isset($pagination)) {
 } else {
 	
 	$stmt = $struttura->read($queryModel);
-	$totalRecords = $struttura->totalItemsNumber()->rowCount();
+	$totalRecords = $struttura->totalItemsPerFilters($queryModel)->rowCount();
 	$rowCount = $stmt->rowCount();
 	
 	if($rowCount > 0) {

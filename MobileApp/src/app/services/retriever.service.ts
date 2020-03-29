@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { Structure} from '../models/structure';
-import { map} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -43,6 +43,21 @@ export class RetrieverService {
     );
   }
 
+  getCaratteristiche(): Observable<Caratteristica[]> {
+      return this.httpClient.get<any>(`${environment.apiBaseUrl}/Caratteristiche/read.php`).pipe(
+          map( (res: any) => {
+              if (res.error !== true) {
+                  return res.data;
+              } else {
+                  return [];
+              }
+          }),
+          catchError((err) => {
+            return of([]);
+          })
+      );
+  }
+
 }
 
 export interface StructureResponse {
@@ -74,3 +89,7 @@ export enum EnumCategorie {
 
 export type TipoCategoria = 'Ristorante' | 'Hotel' | 'Luogo di Interesse';
 
+export interface Caratteristica {
+    idcaratteristica ?: number;
+    nomecaratteristica ?: string;
+}
