@@ -1,19 +1,19 @@
 <ion-content>
-<ion-segment color="primary" (ionChange)="impostaCategoria($event)" [value]="categoria">
+<ion-segment color="primary" (ionChange)="setCategoria($event)" [value]="categoria">
 
   <ion-segment-button *ngFor="let categoria of categorie" [value]="categoria.label">
     <ion-label>{{categoria.label}}</ion-label>
     <ion-icon [name]="categoria.icon"></ion-icon>
   </ion-segment-button>
 </ion-segment>
-  <star-rating #rating
+  <star-rating
                activeIcon = "star"
                defaultIcon = "star-outline"
                activeColor = "#488aff"
                defaultColor = "#f4f4f4"
                readonly="false"
-               rating="3"
-               fontSize = "32px"></star-rating>
+               [rating]="rating"
+               fontSize = "32px"  (ratingChanged) = "setRating($event)"  ></star-rating>
 
   <ion-list>
     <ion-list-header>Preferenze</ion-list-header>
