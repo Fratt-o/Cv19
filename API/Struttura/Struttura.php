@@ -39,11 +39,22 @@ class Struttura
 	}
 	
 	*/
+	
+	
+	
+	/*
+		SELECT * FROM Struttura s 
+		JOIN StrutturaCaratteristiche sc on s.idstruttura = sc.fkstruttura 
+		WHERE    
+		sc.fkcaratteristica in (arrayCaratteristiche)
+		group by idstruttura 
+		having count(idstruttura) >= count(arrayCaratteristiche)
+	*/
     function read($queryModel){
 		$page = $queryModel->pagination->page;
 		$pageSize = $queryModel->pagination->pageSize;
 		$filter = $queryModel->filter;
-		
+		$rating = $queryModel->rating;
 		
 		$join = '';
 		$where = 'WHERE 1 = 1';
@@ -60,7 +71,9 @@ class Struttura
 			$having = ' having count(idstruttura) = '.count($filter->caratteristiche);
 		}
 		
-		
+		if(isset($rating)){
+			$where .= " AND s.mediavoto >= $rating ";
+		}
 		
 		$limit = $page*$pageSize. ',' . (($page*$pageSize + $pageSize)); 
         $query = "SELECT * FROM Struttura s $join $where $groupBy $having LIMIT $limit"; 
