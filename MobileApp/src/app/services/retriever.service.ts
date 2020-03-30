@@ -82,12 +82,12 @@ export interface FilterModel {
 }
 
 export enum EnumCategorie {
-    Ristorante = 'Ristorante',
+    Ristorante = 'Ristorazione',
     Hotel = 'Hotel',
     Attrazioni = 'Luogo di Interesse'
 }
 
-export type TipoCategoria = 'Ristorante' | 'Hotel' | 'Luogo di Interesse';
+export type TipoCategoria = 'Ristorazione' | 'Hotel' | 'Luogo di Interesse';
 
 export interface Caratteristica {
     idcaratteristica ?: number;
