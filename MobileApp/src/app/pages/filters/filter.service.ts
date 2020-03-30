@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import {FilterModel} from '../../services/retriever.service';
+import {FilterModel} from '../../models/interfaces/filtermodel';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilterService {
 
-  private filter: FilterModel
+  private filter: FilterModel;
   constructor() { }
 
   saveFilter(filter: FilterModel) {

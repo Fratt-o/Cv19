@@ -1,8 +1,11 @@
 import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {ModalController, NavController} from '@ionic/angular';
 import {NgForm} from '@angular/forms';
-import {Caratteristica, EnumCategorie, FilterModel, RetrieverService, TipoCategoria} from '../../services/retriever.service';
 import {FilterService} from './filter.service';
+import {EnumCategorie} from '../../models/enumerations/enumcategorie';
+import {Caratteristica} from '../../models/interfaces/caratteristica';
+import {FilterModel, TipoCategoria} from '../../models/interfaces/filtermodel';
+import {RetrieverService} from '../../services/retriever.service';
 
 @Component({
   selector: 'app-filters',

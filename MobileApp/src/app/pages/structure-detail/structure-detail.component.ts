@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RetrieverService} from '../../services/retriever.service';
-import {Structure} from '../../models/structure';
+import {Structure} from '../../models/class/structure';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 

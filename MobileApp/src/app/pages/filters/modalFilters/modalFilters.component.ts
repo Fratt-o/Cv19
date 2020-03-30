@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FiltersComponent } from '../filters.component';
-import {FilterModel} from '../../../services/retriever.service';
+import {FilterModel} from '../../../models/interfaces/filtermodel';
 
 @Component({
   selector: 'modalFilters',

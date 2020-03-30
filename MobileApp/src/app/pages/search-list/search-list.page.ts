@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import { RetrieverService} from '../../services/retriever.service';
 import {Router} from '@angular/router';
-import { Structure } from '../../models/structure';
+import { Structure } from '../../models/class/structure';
 import {IonInfiniteScroll} from '@ionic/angular';
 import {environment} from '../../../environments/environment';
 import {FilterService} from '../filters/filter.service';

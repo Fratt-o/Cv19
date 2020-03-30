@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, of} from 'rxjs';
-import { Structure} from '../models/structure';
+import { Structure} from '../models/class/structure';
 import {catchError, map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import {AttractionsListModel} from '../models/interfaces/attractionlistmodel';
+import {Caratteristica} from '../models/interfaces/caratteristica';
+import {StructureResponse} from '../models/interfaces/structureresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -58,38 +61,4 @@ export class RetrieverService {
       );
   }
 
-}
-
-export interface StructureResponse {
-    error: boolean;
-    data: any;
-    status: {
-        hasMoreItems: boolean;
-    };
-}
-
-export interface AttractionsListModel {
-    filter?: FilterModel;
-    pagination: {
-        pageSize: number;
-        page: number;
-    };
-}
-
-export interface FilterModel {
-    categoria?: TipoCategoria;
-    caratteristiche?: number[];
-}
-
-export enum EnumCategorie {
-    Ristorante = 'Ristorazione',
-    Hotel = 'Hotel',
-    Attrazioni = 'Luogo di Interesse'
-}
-
-export type TipoCategoria = 'Ristorazione' | 'Hotel' | 'Luogo di Interesse';
-
-export interface Caratteristica {
-    idcaratteristica ?: number;
-    nomecaratteristica ?: string;
 }
