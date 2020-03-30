@@ -54,7 +54,7 @@ class Struttura
 		$page = $queryModel->pagination->page;
 		$pageSize = $queryModel->pagination->pageSize;
 		$filter = $queryModel->filter;
-		$rating = $queryModel->rating;
+		$rating = $filter->rating;
 		
 		$join = '';
 		$where = 'WHERE 1 = 1';
