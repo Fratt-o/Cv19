@@ -18,6 +18,7 @@ export class FiltersComponent implements OnInit{
   categoriaSelezionata: any;
   caratteristiche: Caratteristica[];
   caratteristicheSelezionate: number[] = [];
+  rating: number;
   categorie = [
     {
       label: EnumCategorie.Ristorante,
@@ -47,6 +48,7 @@ export class FiltersComponent implements OnInit{
     if (this.filterService.hasFilter()) {
       const filter = this.filterService.getFilter();
       this.categoria = filter.categoria;
+      this.rating = filter.rating;
       this.caratteristicheSelezionate.push(...filter.caratteristiche);
     }
   }
@@ -65,13 +67,18 @@ export class FiltersComponent implements OnInit{
     }
   }
 
-  impostaCategoria(event: CustomEvent) {
+  setCategoria(event: CustomEvent) {
     this.categoria = event.detail.value;
+  }
+
+  setRating(rating: number) {
+    this.rating = rating;
   }
 
   sendFilters(): any {
     const filterModel: FilterModel = {
       categoria: this.categoria,
+      rating: this.rating,
       caratteristiche: this.caratteristicheSelezionate
     };
     this.filterService.saveFilter(filterModel);
