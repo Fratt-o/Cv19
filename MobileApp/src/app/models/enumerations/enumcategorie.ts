@@ -1,5 +1,5 @@
 export enum EnumCategorie {
     Ristorante = 'Ristorazione',
     Hotel = 'Hotel',
-    Attrazioni = 'Luogo di Interesse'
+    Attrazioni = 'Luogo di interesse'
 }

@@ -1,5 +1,6 @@
 export interface FilterModel {
     categoria?: TipoCategoria;
+    rating?: number;
     caratteristiche?: number[];
 }
 
