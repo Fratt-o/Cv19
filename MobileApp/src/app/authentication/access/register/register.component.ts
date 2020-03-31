@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {ModalController, NavController} from '@ionic/angular';
-import {AuthService, RegisterModel} from '../../../services/auth.service';
+import {AuthService} from '../../../services/auth.service';
 import {NgForm} from '@angular/forms';
+import {RegisterModel} from '../../../models/interfaces/registermodel';
 
 @Component({
   selector: 'app-register',

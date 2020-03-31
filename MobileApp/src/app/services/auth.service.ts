@@ -65,6 +65,7 @@ export class AuthService {
   /*getUsername(): string {
     return this.currentUser.avatar;
   }*/
+
   saveCurrentUser(jwt: string): void {
     const jwtDecodificato =  jwt_decode(jwt);
     this.currentUser = new User({
