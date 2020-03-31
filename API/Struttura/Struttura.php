@@ -55,6 +55,7 @@ class Struttura
 		$pageSize = $queryModel->pagination->pageSize;
 		$filter = $queryModel->filter;
 		$rating = $filter->rating;
+		$name = $filter->nome;
 		
 		$join = '';
 		$where = 'WHERE 1 = 1';
@@ -62,6 +63,10 @@ class Struttura
 		$having = '';
 		if(isset($filter->categoria)) {
 			$where .= " AND categoria = '$filter->categoria' ";
+		}
+		
+		if(isset($name)) {
+			$where .= " AND nomestruttura LIKE '$name%' ";
 		}
 		
 		if(isset($filter->caratteristiche) && count($filter->caratteristiche) > 0) {
