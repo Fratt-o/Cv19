@@ -12,6 +12,7 @@ import {ModalLoginComponent} from '../../shared/component/modalLogin/modalLogin.
 import {ModalFiltersComponent} from '../filters/modalFilters/modalFilters.component';
 import {FiltersComponent} from '../filters/filters.component';
 import {SharedModule} from '../../shared/shared.module';
+import {PopoverComponent} from '../../shared/component/popover/popover.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {SharedModule} from '../../shared/shared.module';
     SearchListPageRoutingModule,
     SharedModule
   ],
-  entryComponents: [FiltersComponent],
-  declarations: [SearchListPage, StructureDetailComponent, ModalLoginComponent, ModalFiltersComponent, FiltersComponent]
+  entryComponents: [FiltersComponent, PopoverComponent],
+  declarations: [SearchListPage, StructureDetailComponent, ModalLoginComponent, ModalFiltersComponent, FiltersComponent, PopoverComponent]
 })
 export class SearchListPageModule {}

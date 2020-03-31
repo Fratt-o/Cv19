@@ -17,9 +17,6 @@ export class RetrieverService {
   constructor( private httpClient: HttpClient)  { }
 
   hasMoreAttractions = true;
-  attractionSelector(nomeLuogo: string): Observable<Structure[]> {
-    return this.httpClient.get<Structure[]>('http://localhost:3000/point-of-interests?name_like=' + nomeLuogo);
-  }
 
   getAttractions(model: AttractionsListModel): Observable<Structure[]> {
       const url = `${environment.apiBaseUrl}/Struttura/read.php`;

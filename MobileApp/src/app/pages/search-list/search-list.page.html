@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar debounce="500" #input (ionChange)="cercaLuogo(input.value)"></ion-searchbar>
+  <ion-searchbar debounce="500" #searchbar (ionChange)="cercaLuogo(searchbar.value)"></ion-searchbar>
   <div *ngIf="tuttiLuoghi">
-    <modalFilters (confirm)="retrieveOnFilter($event)"></modalFilters>
+    <modalFilters [disabled]="searchbar.value !== ''" (confirm)="retrieveOnFilter($event)"></modalFilters>
     <ion-list >
       <ion-list-header>
         <ion-text>
@@ -46,7 +46,7 @@
     </ion-infinite-scroll>
 </ion-content>
 
-<div *ngIf="luoghiMostrati.length == 0">
+<div *ngIf="isLoading">
   <ion-list>
     <ion-item>
       <ion-thumbnail slot="start">

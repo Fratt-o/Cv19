@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FiltersComponent } from '../filters.component';
 import {FilterModel} from '../../../models/interfaces/filtermodel';
@@ -9,6 +9,7 @@ import {FilterModel} from '../../../models/interfaces/filtermodel';
   styleUrls: ['./modalFilters.component.scss'],
 })
 export class ModalFiltersComponent  {
+  @Input() disabled: boolean;
   @Output() confirm: EventEmitter<FilterModel> = new EventEmitter<FilterModel>();
   constructor(public modalCtrl: ModalController) { }
   async showModal() {

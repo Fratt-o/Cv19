@@ -5,6 +5,7 @@ import { Structure } from '../../models/class/structure';
 import {IonInfiniteScroll} from '@ionic/angular';
 import {environment} from '../../../environments/environment';
 import {FilterService} from '../filters/filter.service';
+import {FilterModel} from '../../models/interfaces/filtermodel';
 
 
 @Component({
@@ -18,20 +19,21 @@ export class SearchListPage implements OnInit {
   tuttiLuoghi: Structure[] = [];
 
   currentPage = 0;
-
+  isLoading = false;
   constructor(private rtrService: RetrieverService,
               private router: Router, private filterService: FilterService) { }
 
   ngOnInit() {
-    this.retriveMoreAttractions(environment.numAttractionsToRetrieve, this.currentPage).subscribe((luoghi) => {
-      this.luoghiMostrati.push(...luoghi);
-    });
+    this.retriveAttractions(0);
   }
 
   cercaLuogo(nomeLuogo: string): void {
-    this.rtrService.attractionSelector(nomeLuogo).subscribe((struttura) => {
-      this.luoghiMostrati = struttura;
-    });
+    this.luoghiMostrati = [];
+    const filter: FilterModel = {
+      nome: nomeLuogo
+    }
+    this.retriveAttractions(0, filter);
+    this.filterService.saveFilter(filter);
   }
 
   goToStructureDetail(id: number): void {
@@ -47,42 +49,40 @@ export class SearchListPage implements OnInit {
     this.currentPage++;
 
     const filter = this.filterService.getFilter();
-    this.retriveMoreAttractions(environment.numAttractionsToRetrieve, this.currentPage, filter).subscribe((luoghi) => {
+    this.retriveAttractions(this.currentPage, filter, () => {
+      // Nasconde il loader della paginazione
       event.target.complete();
-      this.luoghiMostrati.push(...luoghi);
-
       if (!this.rtrService.hasMoreAttractions) {
+        // Disabilita la paginazione
         event.target.disabled = true;
       }
     });
   }
 
-  toggleInfiniteScroll() {
-    this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
-  }
-
-  retriveMoreAttractionsOld(qty: number) {
-    const currentShownAttractions = this.luoghiMostrati.length;
-    for (let i = currentShownAttractions; i < qty + currentShownAttractions && i < this.tuttiLuoghi.length; i++) {
-      this.luoghiMostrati.push(this.tuttiLuoghi[i]);
-    }
-  }
-
   retrieveOnFilter(filter: any) {
     this.luoghiMostrati = [];
-    this.retriveMoreAttractions(environment.numAttractionsToRetrieve, 0, filter).subscribe((luoghi) => {
-      this.luoghiMostrati.push(...luoghi);
-    });
+    this.retriveAttractions(0, filter);
   }
 
 
-  retriveMoreAttractions(qty: number, page: number, filter?: any) {
-    return this.rtrService.getAttractions({
+  retriveAttractions(page: number, filter?: any, cb?: () => void) {
+    this.isLoading = true;
+    this.rtrService.getAttractions({
       pagination: {
         page,
-        pageSize: qty
+        pageSize: environment.numAttractionsToRetrieve
       },
       filter
+    }).subscribe((luoghi) => {
+      setTimeout(() => {
+        this.isLoading = false;
+        this.luoghiMostrati.push(...luoghi);
+      }, 800);
+      if (cb) {
+        cb();
+      }
+    }, () => {
+      this.isLoading = false;
     });
   }
 }
