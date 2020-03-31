@@ -54,7 +54,7 @@ class Struttura
 		$page = $queryModel->pagination->page;
 		$pageSize = $queryModel->pagination->pageSize;
 		
-		$query = buildQuery($queryModel);
+		$query = $this->buildQuery($queryModel);
 		
 		$limit = $page*$pageSize. ',' . (($page*$pageSize + $pageSize)); 
         $query .= "LIMIT $limit"; 
@@ -78,7 +78,7 @@ class Struttura
     }
 	
 	function totalItemsPerFilters($queryModel) {
-		$query = buildQuery($queryModel);
+		$query = $this->buildQuery($queryModel);
         // die($query);
 		$stmt = $this->conn->prepare($query);
 		
