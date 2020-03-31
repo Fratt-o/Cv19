@@ -49,7 +49,7 @@ export class FiltersComponent implements OnInit{
       const filter = this.filterService.getFilter();
       this.categoria = filter.categoria;
       this.rating = filter.rating;
-      this.caratteristicheSelezionate.push(...filter.caratteristiche);
+      this.caratteristicheSelezionate.push(...(filter.caratteristiche || []));
     }
   }
 

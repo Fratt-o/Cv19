@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AccessPage } from '../../../authentication/access/access.page';
 import {AuthService} from '../../../services/auth.service';
+import { PopoverController } from '@ionic/angular';
+import {PopoverComponent} from '../popover/popover.component';
 
 @Component({
   selector: 'modalLogin',
@@ -10,7 +12,9 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class ModalLoginComponent  {
 
-  constructor(public modalCtrl: ModalController, private authService: AuthService) { }
+  constructor(public modalCtrl: ModalController,
+              private authService: AuthService,
+              public popoverController: PopoverController) { }
 
   async showModal() {
     const modal = await this.modalCtrl.create({
@@ -22,7 +26,17 @@ export class ModalLoginComponent  {
     });
     return await modal.present();
     }
+
+  async showPopover() {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      translucent: true,
+      animated: true
+    });
+    return await popover.present();
   }
+  }
+
 
 
 
