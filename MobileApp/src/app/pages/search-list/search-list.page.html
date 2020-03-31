@@ -20,7 +20,17 @@
         </ion-thumbnail>
         <ion-label>
           <h2>{{luogo.name}}</h2>
-          <h3>{{luogo.rating}}</h3>
+          <h3>
+            <star-rating
+                    activeIcon = "star"
+                    defaultIcon = "star-outline"
+                    activeColor = "#488aff"
+                    defaultColor = "#f4f4f4"
+                    readonly="true"
+                    halfStar="true"
+                    rating="{{luogo.rating}}"
+                    fontSize = "16px"></star-rating>
+          </h3>
           <p>{{luogo.type}}</p>
           <p>{{luogo.address}}, {{luogo.city}}, {{luogo.province}}</p>
         </ion-label>
