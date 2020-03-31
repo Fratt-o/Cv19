@@ -5,6 +5,9 @@ import * as jwt_decode from 'jwt-decode';
 import {User} from '../models/class/user';
 import {Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
+import {RegisterResponse} from '../models/interfaces/registeresponse';
+import {RegisterModel} from '../models/interfaces/registermodel';
+import {LoginResponse} from '../models/interfaces/loginresponse';
 
 
 @Injectable({
@@ -78,23 +81,4 @@ export class AuthService {
     }
   }
 
-}
-
-export interface LoginResponse {
-  message: string;
-  jwt: string;
-}
-
-export interface RegisterResponse {
-  error: boolean;
-  register?: RegisterModel;
-  error_msg?: string;
-}
-
-export interface RegisterModel {
-  nome: string;
-  cognome: string;
-  email: string;
-  password: string;
-  username: string;
 }
