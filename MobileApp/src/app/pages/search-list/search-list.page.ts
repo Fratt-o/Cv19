@@ -49,14 +49,7 @@ export class SearchListPage implements OnInit {
     this.currentPage++;
 
     const filter = this.filterService.getFilter();
-    this.retriveAttractions(this.currentPage, filter, () => {
-      // Nasconde il loader della paginazione
-      event.target.complete();
-      if (!this.rtrService.hasMoreAttractions) {
-        // Disabilita la paginazione
-        event.target.disabled = true;
-      }
-    });
+    this.retriveAttractions(this.currentPage, filter);
   }
 
   retrieveOnFilter(filter: any) {
@@ -67,6 +60,7 @@ export class SearchListPage implements OnInit {
 
   retriveAttractions(page: number, filter?: any, cb?: () => void) {
     this.isLoading = true;
+    this.infiniteScroll.disabled = false;
     this.rtrService.getAttractions({
       pagination: {
         page,
@@ -77,6 +71,12 @@ export class SearchListPage implements OnInit {
       setTimeout(() => {
         this.isLoading = false;
         this.luoghiMostrati.push(...luoghi);
+        // Nasconde il loader della paginazione
+        this.infiniteScroll.complete();
+        if (!this.rtrService.hasMoreAttractions) {
+          // Disabilita la paginazione se non ci sono altre strutture da recuperare
+          this.infiniteScroll.disabled = true;
+        }
       }, 800);
       if (cb) {
         cb();
