@@ -58,7 +58,7 @@ class Struttura
 		
 		$limit = $page*$pageSize. ',' . (($page*$pageSize + $pageSize)); 
         $query .= " LIMIT $limit"; 
-		echo $query;
+		
         // die($query);
 		$stmt = $this->conn->prepare($query);
 		
