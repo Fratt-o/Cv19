@@ -28,7 +28,7 @@ class Recensioni{
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
                 . "ON a.fkutente = b.email " 
-				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1"
+				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1";
         
 		
         $stmt = $this->conn->prepare($query);
