@@ -27,7 +27,7 @@ class Recensioni{
         $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture "
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
-                . "ON a.fkutente = b.email"; 
+                . "ON a.fkutente = b.email " 
 				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1"
         
 		$stmt->bindParam(":idStruttura", $idStruttura);
