@@ -30,8 +30,9 @@ class Recensioni{
                 . "ON a.fkutente = b.email " 
 				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1"
         
-		$stmt->bindParam(":idStruttura", $idStruttura);
+		
         $stmt = $this->conn->prepare($query);
+		$stmt->bindParam(":idStruttura", $idStruttura);
 		$stmt->execute();
 		return $stmt;
     }
