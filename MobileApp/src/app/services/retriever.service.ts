@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, of} from 'rxjs';
-import { Structure} from '../models/class/structure';
+import {Reviews, Structure} from '../models/class/structure';
 import {catchError, map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {AttractionsListModel} from '../models/interfaces/attractionlistmodel';
@@ -36,12 +36,22 @@ export class RetrieverService {
   }
 
   structureDetail(id: number): Observable<Structure> {
+      //const url =  `${environment.apiBaseUrl}/Recensioni/detail.php?idStruttura=${idStruttura}`;
     return this.httpClient.get<Structure>('http://localhost:3000/point-of-interests/' + id).pipe(
         map((struttura) => {
             return new Structure(struttura);
         })
     );
   }
+
+    getReviews(idStruttura: number): Observable<Reviews[]> {
+      const url =  `${environment.apiBaseUrl}/Recensioni/read.php?idStruttura=${idStruttura}`;
+      return this.httpClient.get<Reviews[]>(url).pipe(
+            map((reviews) => {
+                return reviews.map(review => new Reviews(review));
+            })
+        );
+    }
 
   getCaratteristiche(): Observable<Caratteristica[]> {
       return this.httpClient.get<any>(`${environment.apiBaseUrl}/Caratteristiche/read.php`).pipe(
