@@ -18,17 +18,22 @@ class Recensioni{
 	$this->conn = $db;
 	}
     
-    function read(){
+    function read($idStruttura){
         
+		"SELECT * from RECENSIONI where fkstrutture = :idStruttura";
+		 
+		
+		
         $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture "
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
                 . "ON a.fkutente = b.email"; 
+				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1"
         
-
+		$stmt->bindParam(":idStruttura", $idStruttura);
         $stmt = $this->conn->prepare($query);
-	$stmt->execute();
-	return $stmt;
+		$stmt->execute();
+		return $stmt;
     }
     
     //nun t scurdà se nun va buon e colpa della query
