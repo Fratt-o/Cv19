@@ -26,11 +26,9 @@ catch (Exception  $E){
     echo json_encode(array("message"=>"errore connessione al db"));
 }  
 $recensione = new Recensioni($db);
-
-$queryModel = json_decode(file_get_contents("php://input"));
 try{
-	
-    $stmt = $recensione->read($queryModel->idStruttura);
+	$idStruttura = $_GET["idStruttura"];	
+    $stmt = $recensione->read($idStruttura);
 }catch(Exception $E){
     http_response_code(400);
     echo json_encode(array("message"=>"errore ricerca recensioni db"));

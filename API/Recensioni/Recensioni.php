@@ -20,19 +20,13 @@ class Recensioni{
     
     function read($idStruttura){
         
-		"SELECT * from RECENSIONI where fkstrutture = :idStruttura";
-		 
-		
-		
         $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture "
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
                 . "ON a.fkutente = b.email " 
-				. "WHERE fkstrutture = :idStruttura and abilitazioneadmin = 1";
+				. "WHERE fkstrutture = $idStruttura and abilitazioneadmin = 1";
         
-		
         $stmt = $this->conn->prepare($query);
-		$stmt->bindParam(":idStruttura", $idStruttura);
 		$stmt->execute();
 		return $stmt;
     }
