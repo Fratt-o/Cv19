@@ -15,7 +15,7 @@ if ($method == "OPTIONS") {
     die();
 }
 include_once '../config/databaseconnect.php'; 
-include_once 'Recensioni.php';
+include_once 'Struttura.php';
 
 try{
     $database = new Database(); 
@@ -25,10 +25,10 @@ catch (Exception  $E){
     http_response_code(400);
     echo json_encode(array("message"=>"errore connessione al db"));
 }  
-$recensione = new Recensioni($db);
+$struttura = new Struttura($db);
 try{
 	$idStruttura = $_GET["idStruttura"];	
-    $stmt = $recensione->read($idStruttura);
+    $stmt = $struttura->detail($idStruttura);
 }catch(Exception $E){
     http_response_code(400);
     echo json_encode(array("message"=>"errore ricerca recensioni db"));
