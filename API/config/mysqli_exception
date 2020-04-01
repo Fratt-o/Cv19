@@ -1,0 +1,23 @@
+<?php
+
+define("MYSQL_CONN_ERROR", "Unable to connect to database.");
+mysqli_report(MYSQLI_REPORT_OFF); 
+
+// Ensure reporting is setup correctly
+mysqli_report(MYSQLI_REPORT_STRICT);
+
+// Connect function for database access
+function connect($usr,$pw,$db,$host) {
+   try {
+      $mysqli = new mysqli($host,$usr,$pw,$db);
+      $connected = true;
+   } catch (mysqli_sql_exception $e) {
+      throw $e;
+   }
+}
+
+function execute_query($stmt_query){
+    
+    
+    
+}
