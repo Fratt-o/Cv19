@@ -107,7 +107,7 @@ class Struttura
 			$join .= " JOIN StrutturaCaratteristiche sc on s.idstruttura = sc.fkstruttura "; 
 			$caratteristiche = implode(',', $filter->caratteristiche);
 			$where .= " AND sc.fkcaratteristica in ($caratteristiche)";
-			$having = ' having count(idstruttura) = '.count($filter->caratteristiche);
+			$having = ' having count(idstruttura) = '.count($filter->caratteristiche).' ';
 		}
 		
 		if(isset($rating)){
