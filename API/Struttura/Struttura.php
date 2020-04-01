@@ -57,8 +57,8 @@ class Struttura
 		$query = $this->buildQuery($queryModel);
 		
 		$limit = $page*$pageSize. ',' . (($page*$pageSize + $pageSize)); 
-        $query .= "LIMIT $limit"; 
-		
+        $query .= " LIMIT $limit"; 
+		echo $query;
         // die($query);
 		$stmt = $this->conn->prepare($query);
 		
