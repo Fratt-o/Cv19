@@ -90,7 +90,7 @@ if(!isset($pagination)) {
 
 exit();
 
-$stmt = $struttura->read();
+$stmt = $struttura->read($pagination);
 $stmt_caratteristiche = $struttura->stampacaratteristiche();
 $car = $stmt_caratteristiche->rowCount();
 $num = $stmt->rowCount(); 
