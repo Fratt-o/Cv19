@@ -44,7 +44,15 @@ if (isset($data)){
 	$username = $data->username;
 	$password = $data->password;
 	
-	
+    
+    //TODO: Gestire salvataggio avatar
+    //Controllare che ci sia un file in $data->avatar
+    //Salvare il file con nome: emailutente.jpg nella cartella immagini/utente
+    //associare l'url del file alla variabile $avatar
+    $avatar = 'http://cv19ing20.altervista.org/Cv19/API/Immagini/user_default.jpeg';
+
+
+
 	//VALIDARE I DATI IN INGRESSO CORRETTAMENTE 
 	
    /* if (ctype_alpha(str_replace(' ', '', "nome")) === false) {
@@ -90,6 +98,7 @@ if (isset($data)){
         $register->username= $username;
         $register->password = $password;
         $register->email = $email;
+        $register->avatar = $avatar;
         $register = $register->create();
         if ($register) {
             // user stored successfully

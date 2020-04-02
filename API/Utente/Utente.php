@@ -56,6 +56,7 @@ class Utente {
                 nome = :nome,
                 cognome = :cognome,
                 email = :email,
+                avatar = :avatar,
                 password = :password,
                 username = :username";
        
@@ -72,7 +73,8 @@ class Utente {
         $stmt->bindParam(":nome", $this->nome);
         $stmt->bindParam(":cognome", $this->cognome); 
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":username", $this->username);       
+        $stmt->bindParam(":username", $this->username);
+        $stmt->bindParam(":avatar", $this->avatar);       
        
         //hash della password
         $password_hash = password_hash($this->password, PASSWORD_BCRYPT); 
