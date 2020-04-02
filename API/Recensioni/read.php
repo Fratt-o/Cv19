@@ -36,10 +36,8 @@ try{
 $num = $stmt->rowCount(); 
 if($num>0){ 
 	$stutt_arr= array();
-    $strutt_arr['data'] = array();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ 
-    	array_push($strutt_arr['lista'],$row);       
-    }
+    $strutt_arr['data'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     http_response_code(200); 
     echo json_encode($strutt_arr); 
     }
