@@ -13,7 +13,7 @@ export class Structure {
     email?: string;
     latitude?: string;
     longitude?: string;
-    reviews?: Reviews;
+    reviews?: Review[];
 
     constructor(struttura: any) {
         this.name = struttura.nomestruttura;
@@ -33,18 +33,21 @@ export class Structure {
     }
 }
 
-export class Reviews {
+export class Review {
     id?: string;
     title?: string;
     name ?: string;
+    email?: string;
     text?: string;
     rating?: number;
+    avatar?: string;
 
-    constructor(recensione: Reviews) {
-        this.id = recensione.id;
-        this.title = recensione.title;
-        this.name = recensione.name;
-        this.text = recensione.text;
-        this.rating = recensione.rating;
+    constructor(recensione: any) {
+        this.title = recensione.titolo;
+        this.name = recensione.username;
+        this.text = recensione.testo;
+        this.rating = recensione.voto;
+        this.email = recensione.fkutente;
+        this.avatar = recensione.avatar;
     }
 }

@@ -20,7 +20,7 @@ class Recensioni{
     
     function read($idStruttura){
         
-        $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture "
+        $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture, b.avatar "
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
                 . "ON a.fkutente = b.email " 
