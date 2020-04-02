@@ -50,6 +50,19 @@ class Struttura
 		group by idstruttura 
 		having count(idstruttura) >= count(arrayCaratteristiche)
 	*/
+	
+	function detail($idStruttura){
+        
+        $query = "SELECT * "
+                . "FROM Struttura s "
+				. "WHERE idstruttura = $idStruttura";
+        
+        $stmt = $this->conn->prepare($query);
+		$stmt->execute();
+		return $stmt;
+	}
+	
+	
     function read($queryModel){
 		$page = $queryModel->pagination->page;
 		$pageSize = $queryModel->pagination->pageSize;
