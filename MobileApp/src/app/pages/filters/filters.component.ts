@@ -15,7 +15,6 @@ import {RetrieverService} from '../../services/retriever.service';
 export class FiltersComponent implements OnInit{
 
   categoria: TipoCategoria;
-  categoriaSelezionata: any;
   caratteristiche: Caratteristica[];
   caratteristicheSelezionate: number[] = [];
   rating: number;

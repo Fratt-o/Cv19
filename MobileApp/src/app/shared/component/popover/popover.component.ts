@@ -7,7 +7,6 @@ import {AuthService} from '../../../services/auth.service';
   styleUrls: ['./popover.component.scss'],
 })
 export class PopoverComponent {
-  private currentUser: undefined;
 
   constructor(private authService: AuthService) {
   }

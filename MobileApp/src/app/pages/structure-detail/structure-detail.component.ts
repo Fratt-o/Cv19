@@ -24,10 +24,6 @@ export class StructureDetailComponent implements OnInit {
         }, (err) => {
           this.error = true;
         });
-
-        this.rtrService.getReviews(params.id).subscribe(reviews => {
-          console.log(reviews);
-        });
       }
     });
   }
