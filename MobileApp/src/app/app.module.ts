@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AccessPageModule} from './authentication/access/access.module';
 import {SearchListPageModule} from './pages/search-list/search-list.module';
+import { ReviewFormComponent } from './pages/structure-detail/review-form/review-form.component';
 
 @NgModule({
   declarations: [AppComponent],
