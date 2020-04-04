@@ -31,6 +31,7 @@ class Recensioni{
 		return $stmt;
     }
 
+    // Non toccare il codice sotto
     function readReviewToModerate(){
         $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture, b.avatar "
                 . "FROM Recensioni a "
@@ -42,7 +43,7 @@ class Recensioni{
 		$stmt->execute();
 		return $stmt;
     }
-    
+    //ora puoi ottoccare il codice    
     //nun t scurdà se nun va buon e colpa della query
     function create($review){
         $query = "INSERT INTO Recensioni
