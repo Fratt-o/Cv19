@@ -29,7 +29,10 @@ $register=new Utente($db);
 // json response array
 $response = array("error" => FALSE);
 
-$data = json_decode(file_get_contents("php://input"));
+// $data = json_decode(file_get_contents("php://input"));
+
+
+$data = $_POST;
 
 if (isset($data)){
 /*if (isset(filter_input(INPUT_POST, $email, FILTER_VALIDATE_EMAIL)) && isset(filter_input(INPUT_POST, $nome, FILTER_SANITIZE_STRING)) && 
@@ -38,18 +41,18 @@ if (isset($data)){
  
     // receiving the post params
 	
-	$nome = $data->nome;
+	/*$nome = $data->nome;
 	$cognome = $data->cognome;
 	$email = $data->email;
 	$username = $data->username;
-	$password = $data->password;
+	$password = $data->password;*/
 	
-    
-    //TODO: Gestire salvataggio avatar
-    //Controllare che ci sia un file in $data->avatar
-    //Salvare il file con nome: emailutente.jpg nella cartella immagini/utente
-    //associare l'url del file alla variabile $avatar
-    $avatar = 'http://cv19ing20.altervista.org/Cv19/API/Immagini/user_default.jpeg';
+	$nome = $data["nome"];
+	$cognome = $data["cognome"];
+	$email = $data["email"];
+	$username = $data["username"];
+	$password = $data["password"];
+	
 
 
 
@@ -92,6 +95,8 @@ if (isset($data)){
 		http_response_code("200");
         echo json_encode($response);
     } else {
+		$avatar = uploadFile($_FILES["file"], $email); 
+		
         // create a new user
         $register->nome = $nome;
         $register->cognome = $cognome;
@@ -117,6 +122,31 @@ if (isset($data)){
 else{
     echo"Errore ";
     http_response_code("406");
+}
+
+
+
+
+function uploadFile($file, $name){
+	$avatar = 'http://cv19ing20.altervista.org/Cv19/API/Immagini/user_default.jpeg';
+	if(!isset($file)) {
+		return $avatar;
+	}
+	$fileName = $_FILES['file']['name'];
+	$fileTmpName  = $_FILES['file']['tmp_name'];
+	$fileExtension = strtolower(end(explode('.',$fileName)));
+	$currentDir = getcwd();
+	$uploadDir = "$currentDir/../Immagini/Utente";
+	$uploadPath = "$uploadDir/$name.$fileExtension";
+	
+	if (is_dir($uploadDir) && is_writable($uploadDir)) {
+		 $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+		if ($didUpload) {
+			//http://cv19ing20.altervista.org/Cv19/API/Immagini/user_default.jpeg
+			$avatar = "http://cv19ing20.altervista.org/Cv19/API/Immagini/Utente/$name.$fileExtension";
+		} 
+	} 
+	return $avatar;
 }
 
 
