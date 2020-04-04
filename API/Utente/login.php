@@ -51,7 +51,7 @@ if($email_exists && password_verify($data->password, $user->password)){
  
     $token = array(
        "iss" => $iss,
-       "exp" => 600000,
+       "exp" => time() + 7200,
        "aud" => $aud,
        "iat" => $iat,
        "nbf" => $nbf,
