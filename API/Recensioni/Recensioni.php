@@ -13,6 +13,7 @@ class Recensioni{
     public $fkutente;
     public $fkstruttura;
     protected $isEnable;
+	public $nomeMostrato;
     
     public function __construct($db){
 	$this->conn = $db;
@@ -20,7 +21,7 @@ class Recensioni{
     
     function read($idStruttura){
         
-        $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture, b.avatar "
+        $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture, b.avatar, a.nomeMostrato "
                 . "FROM Recensioni a "
                 . "INNER JOIN Utente b "
                 . "ON a.fkutente = b.email " 
@@ -47,8 +48,8 @@ class Recensioni{
     //nun t scurdà se nun va buon e colpa della query
     function create($review){
         $query = "INSERT INTO Recensioni
-            	(voto,titolo,testo,fkutente,fkstrutture	)
-                VALUES (:voto,:titolo,:testo,:fkutente,:fkstrutture)";
+            	(voto,titolo,testo,fkutente,fkstrutture,nomeMostrato)
+                VALUES (:voto,:titolo,:testo,:fkutente,:fkstrutture,:nomeMostrato)";
                 
        
         $stmt = $this->conn->prepare($query);
@@ -58,6 +59,7 @@ class Recensioni{
         $this->fkutente= htmlspecialchars(strip_tags($review->fkutente));
         $this->fkstruttura = $review->fkstruttura;
         $this->voto = $review->voto;
+		$this->nomeMostrato = $review->nomeMostrato;
 
         //$stmt->bindParam('isssi',$this->voto,$this->titolo,$this->testo,$this->fkutente,$this->fkstruttura);
         // binding
@@ -67,6 +69,7 @@ class Recensioni{
         $stmt->bindParam(":voto", $this->voto);  
         $stmt->bindParam(":fkutente", $this->fkutente);
         $stmt->bindParam(":fkstrutture",$this->fkstruttura);
+		$stmt->bindParam(":nomeMostrato",$this->nomeMostrato);
         
         // execute query
         if ($stmt->execute()) {

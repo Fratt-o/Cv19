@@ -44,7 +44,7 @@ export class Review {
 
     constructor(recensione: any) {
         this.title = recensione.titolo;
-        this.name = recensione.username;
+        this.name = recensione.nomeMostrato;
         this.text = recensione.testo;
         this.rating = recensione.voto;
         this.email = recensione.fkutente;
