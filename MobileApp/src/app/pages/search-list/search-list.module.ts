@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,17 +13,21 @@ import {ModalFiltersComponent} from '../filters/modalFilters/modalFilters.compon
 import {FiltersComponent} from '../filters/filters.component';
 import {SharedModule} from '../../shared/shared.module';
 import {PopoverComponent} from '../../shared/component/popover/popover.component';
+import { ReviewFormComponent } from '../structure-detail/review-form/review-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     SearchListPageRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   entryComponents: [FiltersComponent, PopoverComponent],
-  declarations: [SearchListPage, StructureDetailComponent, ModalLoginComponent, ModalFiltersComponent, FiltersComponent, PopoverComponent]
+  declarations: [SearchListPage, StructureDetailComponent, ModalLoginComponent, ModalFiltersComponent, FiltersComponent, PopoverComponent, ReviewFormComponent]
 })
 export class SearchListPageModule {}

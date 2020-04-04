@@ -25,6 +25,10 @@
       <ion-input ngModel type="username" name="username"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-icon name="camera" (click)="takePhoto()"></ion-icon>
+    </ion-item>
+
     <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Conferma</ion-button>
   </form>
   <div color="danger" *ngIf="error">Registrazione fallita</div>

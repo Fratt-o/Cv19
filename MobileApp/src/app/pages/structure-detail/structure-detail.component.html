@@ -44,15 +44,25 @@
         </ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-list >
+        <ion-item class="ion-text-center">
+            <ion-text style="font-size: .8em;"  *ngIf="structure?.reviews.length == 0">Nessuna recensione per questa struttura</ion-text>
+        </ion-item>
+        <ion-list *ngIf="structure?.reviews.length > 0">
             <ion-list-header>Recensioni</ion-list-header>
             <ion-item *ngFor="let recensione of structure?.reviews">
                 <ion-avatar slot="start">
-                    <img src="{{recensione.avatar}}">
+                    <img [src]="recensione.avatar">
                 </ion-avatar>
                 <ion-label class="ion-text-wrap">
                     <h2>{{recensione.name}}</h2>
-                    <h3>{{recensione.rating}}</h3>
+                    <star-rating
+                            activeIcon = "star"
+                            defaultIcon = "star-outline"
+                            activeColor = "#488aff"
+                            readonly="true"
+                            halfStar="true"
+                            rating="{{recensione.rating}}"
+                            fontSize = "16px"></star-rating>
                     <p>{{recensione.text}}</p>
                 </ion-label>
             </ion-item>
@@ -61,5 +71,5 @@
     <ion-card >
         <ion-card-title>Vuoi lasciare una recensione?</ion-card-title>
             <modalLogin *ngIf="!authService.isAuthenticated()">Accedi</modalLogin>
-            <ion-textarea *ngIf="authService.isAuthenticated()"></ion-textarea>
+            <app-review-form [idStruttura] = "structure.id" *ngIf="authService.isAuthenticated() && structure"></app-review-form>
     </ion-card>
