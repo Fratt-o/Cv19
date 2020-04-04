@@ -103,7 +103,7 @@ class Utente {
 	   $check_email=htmlspecialchars(strip_tags($check_email));
 		// query to check if email exists
 		$query = 
-				"SELECT username, password
+				"SELECT username, password, avatar
 				FROM Utente
 				WHERE email = '".$check_email."'";
 		$stmt = $this->conn->prepare( $query );
@@ -123,6 +123,7 @@ class Utente {
 			// assign values to object properties
 			$this->username = $row['username'];
 			$this->password = $row['password'];
+			$this->avatar = $row["avatar"];
 	 
 			// return true because email exists in the database
 			return true;
