@@ -36,7 +36,7 @@ export class AuthService {
     );
   }
 
-  register(registerModel: RegisterModel): Observable<boolean> {
+  register(registerModel: FormData): Observable<boolean> {
     const url = `${environment.apiBaseUrl}/${environment.apiRegisterUrl}`;
     return this.httpClient.post<RegisterResponse>(url, registerModel).pipe(
         map((risposta: RegisterResponse) => {

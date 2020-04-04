@@ -3,6 +3,7 @@ import {ModalController, NavController} from '@ionic/angular';
 import {AuthService} from '../../../services/auth.service';
 import {NgForm} from '@angular/forms';
 import {RegisterModel} from '../../../models/interfaces/registermodel';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,11 @@ export class RegisterComponent {
 
   constructor(private modalController: ModalController,
               private navCtrl: NavController,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              public photoService: PhotoService) {}
   error = false;
-  register(form: NgForm) {
+  photo: any;
+  async register(form: NgForm) {
     if (!form.valid) {
       return;
     }
@@ -26,20 +29,42 @@ export class RegisterComponent {
     const password = form.controls.password.value;
     const username = form.controls.username.value;
 
+    const imageFile = await fetch(this.photo.webPath).then(r => r.blob());
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('nome', nome);
+    formData.append('password', password);
+    formData.append('cognome', cognome);
+    formData.append('username', username);
+    formData.append('file', imageFile, `${email}.jpg`);
     const registerModel: RegisterModel = {
       email,
       nome,
       password,
       cognome,
-      username
+      username,
+      avatar: imageFile
     };
     this.error = false;
-    this.authService.register(registerModel).subscribe((registrationOk: boolean) => {
+    this.authService.register(formData).subscribe((registrationOk: boolean) => {
       // Se registrationOk = true, allora error deve essere false; e viceversa
       this.error = !registrationOk;
       if (!this.error) {
         this.modalController.dismiss();
       }
     });
+
+    
+  }
+
+  async takePhoto() {
+    this.photo = await this.photoService.takePhoto();
+
+ 
+
+
   }
 }
+
+
