@@ -81,9 +81,7 @@ and open the template in the editor.
                              
                             <button type="submit" class="btn btn-outline-primary">Accedi</button>
                             <hr>
-                            <a href="adminPannel.php">
-                                Link Magico
-                            </a>
+                            
                         </form>    
                     
                   </div>

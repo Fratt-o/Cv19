@@ -30,6 +30,18 @@ class Recensioni{
 		$stmt->execute();
 		return $stmt;
     }
+
+    function readReviewToModerate(){
+        $query = "SELECT a.titolo, a.testo, a.voto, a.fkutente, b.username, a.fkstrutture, b.avatar "
+                . "FROM Recensioni a "
+                . "INNER JOIN Utente b "
+                . "ON a.fkutente = b.email " 
+                . "WHERE abilitazioneadmin = 0";
+                
+        $stmt = $this->conn->prepare($query);
+		$stmt->execute();
+		return $stmt;
+    }
     
     //nun t scurdà se nun va buon e colpa della query
     function create($review){
