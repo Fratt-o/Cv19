@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="sendReview()">
+  <ion-item>
+    <ion-label>Titolo</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <star-rating
+      activeIcon = "star"
+      defaultIcon = "star-outline"
+      activeColor = "#488aff"
+      defaultColor = "#f4f4f4"
+      readonly="false"
+      [rating]="rating"
+      fontSize = "32px"  (ratingChanged) = "setRating($event)"  ></star-rating>
+  </ion-item>
+  <ion-item>
+    <ion-label>Testo</ion-label>
+    <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pubblica con username</ion-label>
+    <ion-checkbox formControlName="username"></ion-checkbox>
+  </ion-item>
+  <button ion-button type="submit" [disabled]="!form.valid">Invia</button>
+</form>
+<div *ngIf="reviewSent">
+  Recensione inviata. In attesa di approvazione. 
+</div>
