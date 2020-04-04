@@ -57,7 +57,7 @@
                         </button>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item " href="index.php">Logout</a>
+                            <a class="dropdown-item " href="index.php"onclick="location.href='SessionDestroy.php';">Logout</a>
                         </div>
                     
                     </div>
