@@ -1,5 +1,6 @@
 <?php 
-    include_once '../Caratteristiche/CaratteristicaMySqlDao.php'; 
+    include_once '../Caratteristiche/CaratteristicaMySqlDao.php';
+    include_once '../Recensioni/RecensioniMySqlDao.php'; 
     class DAOFactory {
         
         private $db;
@@ -15,6 +16,9 @@
         }
         public function getCaratteristicaDao() {
             return new CaratteristicaMySqlDao();
+        }
+        public function getRecensioniDao(){
+            return new RecensioniMySqlDao();
         }        
     } 
 
