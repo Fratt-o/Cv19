@@ -8,8 +8,8 @@
         
         }
         public static function getDao(){
-            if($this->theDao == null){
-                $this->theDao = new DAOFactory();
+            if(DAOFactory::$theDao == null){
+                DAOFactory::$theDao = new DAOFactory();
             }
             return $this->theDao;
         }
