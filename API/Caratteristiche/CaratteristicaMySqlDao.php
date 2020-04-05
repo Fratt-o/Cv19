@@ -9,15 +9,14 @@
         {
             $db = new Database();
             $query = "SELECT * FROM Caratteristiche ";
-            echo $query;
+            
             $result = $db->select($query);
             $caratteristiche = array();
             $caratteristiche['data'] = array();
             if ($result != null){
-                echo "che risultato";
+                
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
-                    echo $row['nomecaratteristica'];
-                    echo "\n";
+                    
                     $caratteristica= new Caratteristica("",$row['idcaratteristica'],$row['nomecaratteristica']);
                     array_push($caratteristiche['data'],$caratteristica);
                 }
