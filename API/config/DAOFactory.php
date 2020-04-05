@@ -13,7 +13,7 @@
             }
             return $this->theDao;
         }
-        public function getCaratteristicaDao(): CaratteristicaDao {
+        public function getCaratteristicaDao()  {
             return new CaratteristicaMySqlDao();
         }        
     } 
