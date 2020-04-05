@@ -1,6 +1,7 @@
 <?php 
     include_once '../config/databaseconnect.php'; 
-    include_once '../Caratteristiche/Caratteristica.php'; 
+    include_once '../Caratteristiche/Caratteristica.php';
+    include_once '../Caratteristiche/CaratteristicaDao.php';
 
     class CaratteristicaMySqlDao implements CaratteristicaDao {
 
