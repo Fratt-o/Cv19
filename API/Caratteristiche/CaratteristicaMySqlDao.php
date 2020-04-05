@@ -20,7 +20,10 @@
                     $caratteristica= new Caratteristica("",$row['idcaratteristica'],$row['nomecaratteristica']);
                     array_push($caratteristiche['data'],$caratteristica);
                 }
+            } else {
+
             }
+            $caratteristiche['error'] = false;
             return $caratteristiche;
         }
     }
