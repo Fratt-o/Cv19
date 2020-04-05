@@ -23,7 +23,7 @@ if ($method == "OPTIONS") {
         $result = $CaratDao->readAllCaratteristiche();
     }catch(Exception $E){
         $result['data']=null;
-        $result['error']=false;
+        $result['error']=true;
         echo json_encode($result);
     }
     http_response_code(200); 

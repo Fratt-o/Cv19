@@ -78,7 +78,7 @@ export class RetrieverService {
     }
 
   getCaratteristiche(): Observable<Caratteristica[]> {
-      return this.httpClient.get<any>(`${environment.apiBaseUrl}/Caratteristiche/read.php`).pipe(
+      return this.httpClient.get<any>(`${environment.apiBaseUrl}/Caratteristiche/ControllerCaratteristica.php`).pipe(
           map( (res: any) => {
               if (res.error !== true) {
                   return res.data;
