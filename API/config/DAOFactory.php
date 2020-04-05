@@ -11,7 +11,7 @@
             if(DAOFactory::$theDao == null){
                 DAOFactory::$theDao = new DAOFactory();
             }
-            return $this->theDao;
+            return DAOFactory::$theDao;
         }
         public function getCaratteristicaDao() {
             return new CaratteristicaMySqlDao();
