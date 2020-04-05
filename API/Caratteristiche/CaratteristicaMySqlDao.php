@@ -12,7 +12,7 @@
             $caratteristiche = array();
             $caratteristiche['data'] = array();
             if ($result != null){
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)()){
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)){
                     $caratteristica= new Caratteristica("",$row['idcaratteristica'],$row['nomecaratteristica']);
                     array_push($caratteristiche['data'],$caratteristica);
                 }
