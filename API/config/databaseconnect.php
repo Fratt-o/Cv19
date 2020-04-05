@@ -6,8 +6,20 @@ private $host = "localhost";
 private $db_name = "my_cv19ing20";
 private $username = "cv19ing20";
 private $password = "";
+
+public $type ="mysql";
 public $conn;
 
+public function __construct(){
+    try{
+        $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->conn->exec("set names utf8");
+    }catch(PDOException $exception){
+        echo "Connection error: " . $exception->getMessage();
+    }
+
+}
 
 public function getConnection(){
  
@@ -24,6 +36,21 @@ public function getConnection(){
         }
  
         return $this->conn;
+
+}
+public function select($query){
+    
+    $stmt = $this->conn->prepare($query);
+    
+    $stmt->execute();
+    
+    return $stmt;
+}
+public function insert($insert){
+
+
+}
+public function modify($modeify){
 
 }
 }

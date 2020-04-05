@@ -3,14 +3,20 @@ class Caratteristica
     {
 		private $conn;
 		private $table = "Caratteristiche";
-		/*
+		
 		public $idcaratteristica;
 		public $nomecaratteristica;
-		*/
+		
 		//Costruttore
-		public function __construct($db){
-		$this->conn = $db;
+		public function __construct($db,$id=null,$nome=null){
+			
+			$this->conn = $db;
+			if($id!=null){
+				$this->idcaratteristica= $id;
+				$this->nomecaratteristica = $nome;
+			}
 		}
+	
 		
 			
 		function read($queryModel){

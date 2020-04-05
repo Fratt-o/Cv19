@@ -33,6 +33,7 @@ include_once 'Recensioni.php';
     
         http_response_code(200); 
         echo json_encode($strutt_arr); 
+        header("Location: http://cv19ing20.altervista.org/Cv19/BackOffice/ModerationPannel.php");
 
     }catch(Exception $E){
         http_response_code(404); 
