@@ -58,7 +58,9 @@ if($email_exists && password_verify($data->password, $user->password)){
        "data" => array(
            "username" => $user->username,
            "email" => $user->email,
-           "avatar" =>$user->avatar
+           "avatar" =>$user->avatar,
+		   "nome" => $user->nome,
+		   "cognome" => $user->cognome
        )
     );
  
