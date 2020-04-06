@@ -26,7 +26,7 @@
     $daoFactory = DAOFactory::getDao();
     try {
         $UtenteDao = $daoFactory->getUtenteDao();
-        $result = $UtenteDao->isRegistred($data->email,$data->psw);
+        $result = $UtenteDao->isRegistred($data->email,$data->password);
         if($result != null){
             $jwt =  new jwtUtility();
 

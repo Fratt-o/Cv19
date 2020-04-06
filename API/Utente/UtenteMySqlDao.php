@@ -12,14 +12,15 @@
 
             $db = new Database();
             $query = 
-				"SELECT username, password, avatar, nome ,cognome
+				"SELECT email, username, password, avatar, nome ,cognome
 				FROM Utente
                 WHERE email = '".$email."'";
-                
+   
             $result = $db->select($query);
             $numRow = $result->rowCount();
             if($numRow >0){
                 $row = $result->fetch(PDO::FETCH_ASSOC);
+ 
                 $user = new Utente("",$row);
                 if(password_verify($psw,$user->password)) return $user;
             }
