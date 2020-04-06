@@ -14,8 +14,16 @@ class Utente {
     
  
     // constructor
-    public function __construct($db){
+    public function __construct($db,$user=null){
         $this->conn = $db;
+        if($user['email']!= null){
+            $this->email=$user['email'];
+            $this->username=$user['username'];
+            $this->avatar=$user['avatar'];
+            $this->password=$user['password'];
+            $this->nome=$user['nome'];
+            $this->cognome=$user['cognome']; 
+        }
     }
     function isAdmin($email){
 
