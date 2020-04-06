@@ -123,7 +123,9 @@ class Utente {
 			// assign values to object properties
 			$this->username = $row['username'];
 			$this->password = $row['password'];
-			$this->avatar = $row["avatar"];
+            $this->avatar = $row["avatar"];
+            $this->nome = $row['nome'];
+            $this->cognome = $row['cognome'];
 	 
 			// return true because email exists in the database
 			return true;

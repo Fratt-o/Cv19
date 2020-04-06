@@ -88,7 +88,8 @@ if (strlen($review->titolo)>2 && strlen($review->titolo)<50 && strlen($review->t
     */
     $review->fkutente = $decodedToken->data->email;
     $review->fkstruttura = $review->struttura;
-	$review->nomeMostrato = $review->mostraUsername ? $decodedToken->data->username : $decodedToken->data->email; 
+    $nomeCompleto = $ $decodedToken->data->nome.' '.$decodedToken->data->cognome;
+	$review->nomeMostrato = $review->mostraUsername ? $decodedToken->data->username : $nomeCompleto; 
     
     http_response_code(200);
     
