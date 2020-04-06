@@ -27,6 +27,10 @@
 
     <ion-item>
       <ion-icon name="camera" (click)="takePhoto()"></ion-icon>
+      <ion-icon name="image-outline" (click)="pickFromGallery()"></ion-icon>
+      <ion-thumbnail slot="end">
+        <img *ngIf="photoBase64" [src]="photoBase64" />
+      </ion-thumbnail>
     </ion-item>
 
     <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Conferma</ion-button>

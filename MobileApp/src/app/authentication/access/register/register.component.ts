@@ -18,6 +18,7 @@ export class RegisterComponent {
               public photoService: PhotoService) {}
   error = false;
   photo: any;
+  photoBase64: any;
   async register(form: NgForm) {
     if (!form.valid) {
       return;
@@ -60,10 +61,12 @@ export class RegisterComponent {
 
   async takePhoto() {
     this.photo = await this.photoService.takePhoto();
+    this.photoBase64 = await this.photoService.toBase64(this.photo.webPath);
+  }
 
- 
-
-
+  async pickFromGallery() {
+    this.photo = await this.photoService.pickFromGallery();
+    this.photoBase64 = await this.photoService.toBase64(this.photo.webPath);
   }
 }
 
