@@ -38,7 +38,9 @@
                 {{structure?.address}},{{structure?.city}},{{structure?.province}},{{structure?.cap}}
             </ion-label>
         </ion-card-content>
-
+        <ion-card-content>
+            <div id="map" #map class="map"></div>
+        </ion-card-content>
         <ion-card-content class="ion-text-wrap">
             {{structure?.description}}
         </ion-card-content>
@@ -55,6 +57,7 @@
                 </ion-avatar>
                 <ion-label class="ion-text-wrap">
                     <h2>{{recensione.name}}</h2>
+                    <h3>{{recensione.title}}</h3>
                     <star-rating
                             activeIcon = "star"
                             defaultIcon = "star-outline"
