@@ -4,10 +4,10 @@
     include_once 'UtenteDao.php';
     class UtenteMySqlDao implements UtenteDao{
 
-        public function readAllUsers(){}
+        /*public function readAllUsers(){}
         public function createUser($user){}
         public function isAdmin($email,$psw){}
-        public function isValidUsername($username){}
+        public function isValidUsername($username){}*/
         public function isRegistred($email,$psw){
 
             $db = new Database();
