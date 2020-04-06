@@ -2,9 +2,10 @@
   <ion-item>
     <ion-label>Titolo</ion-label>
     <ion-input type="text" formControlName="title"></ion-input>
+    <error-validation-msg [form]="form" field="title" errorMsg="Campo Obbligatorio" ></error-validation-msg>
   </ion-item>
   <ion-item>
-    <star-rating
+    <star-rating formControlName="rating"
       activeIcon = "star"
       defaultIcon = "star-outline"
       activeColor = "#488aff"
@@ -14,8 +15,14 @@
       fontSize = "32px"  (ratingChanged) = "setRating($event)"  ></star-rating>
   </ion-item>
   <ion-item>
+    <error-validation-msg [form]="form" field="rating" [avoidTouched]="true" ></error-validation-msg>
+  </ion-item>
+  <ion-item>
     <ion-label>Testo</ion-label>
     <ion-textarea formControlName="description"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <error-validation-msg [form]="form" field="description" ></error-validation-msg>
   </ion-item>
   <ion-item>
     <ion-label>Pubblica con username</ion-label>

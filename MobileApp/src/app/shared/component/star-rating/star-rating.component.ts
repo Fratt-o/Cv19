@@ -1,18 +1,54 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'star-rating',
   templateUrl: 'star-rating.component.html',
-  styleUrls: ['star-rating.component.scss']
+  styleUrls: ['star-rating.component.scss'],
+  providers: [
+    {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: StarRatingComponent,
+        multi: true
+    }
+]
 })
-export class StarRatingComponent implements OnInit {
+export class StarRatingComponent implements ControlValueAccessor,  OnInit {
 
-  @Input() rating: number;
+  private _rating : number;
+  @Input() public set rating(val : number){
+    this._rating = val;
+    // for form
+    if(this.onChange){
+      this.onChange(val);
+    }
+  }
 
+  public get rating(): number{
+    return this._rating;
+  }
+  
+  private onChange : any;
+  private onTouched : any;
+  
+  
+  writeValue(obj: number): void {
+    this.rating = obj;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  
+  
   constructor() {
     this.Math = Math;
     this.parseFloat = parseFloat;
   }
+  
+  
   @Output() ratingChanged: EventEmitter<number> = new EventEmitter<number>();
 
   @Input() readonly = 'false';

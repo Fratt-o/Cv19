@@ -18,8 +18,9 @@ export class ReviewFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
-      description: [''],
-      username: [false]
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(255), Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
+      username: [false],
+      rating: [0, Validators.compose([Validators.min(1), Validators.max(5)])]
     });
    }
 
