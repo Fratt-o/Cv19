@@ -11,8 +11,8 @@ export class Structure {
     province?: string;
     address?: string;
     email?: string;
-    latitude?: string;
-    longitude?: string;
+    latitude?: number;
+    longitude?: number;
     reviews?: Review[];
 
     constructor(struttura: any) {
