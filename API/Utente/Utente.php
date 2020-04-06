@@ -103,7 +103,7 @@ class Utente {
 	   $check_email=htmlspecialchars(strip_tags($check_email));
 		// query to check if email exists
 		$query = 
-				"SELECT username, password, avatar
+				"SELECT username, password, avatar, nome, cognome
 				FROM Utente
 				WHERE email = '".$check_email."'";
 		$stmt = $this->conn->prepare( $query );
