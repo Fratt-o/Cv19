@@ -8,6 +8,7 @@ import { AccessPage } from './access.page';
 import { AccessPageRoutingModule } from './access-routing.module';
 import {ModalRegisterComponent} from '../../shared/component/modalRegister/modalRegister.component';
 import {HttpClientModule} from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     IonicModule,
     AccessPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   declarations: [AccessPage, RegisterComponent, ModalRegisterComponent]
 })

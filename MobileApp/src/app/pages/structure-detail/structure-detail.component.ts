@@ -14,10 +14,10 @@ export class StructureDetailComponent implements OnInit, AfterViewInit {
   structure: Structure;
   error: any = false;
   map: any;
-  @ViewChild('map', {static: true}) mapElement;
+  @ViewChild('map', {static: true}) mapElement; 
 
   constructor(private activatedRoute: ActivatedRoute,
-              private rtrService: RetrieverService, private router: Router,
+              private rtrService: RetrieverService, private router: Router, 
               private authService: AuthService
               ) {
     activatedRoute.params.subscribe(params => {

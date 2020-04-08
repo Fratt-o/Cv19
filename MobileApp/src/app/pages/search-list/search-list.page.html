@@ -4,9 +4,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar debounce="500" #searchbar (ionChange)="cercaLuogo(searchbar.value)"></ion-searchbar>
-  <div *ngIf="tuttiLuoghi">
+  <ion-item>
+    <ion-searchbar class="searchbar" debounce="500" #searchbar (ionChange)="cercaLuogo(searchbar.value)"></ion-searchbar>
     <modalFilters [disabled]="searchbar.value !== ''" (confirm)="retrieveOnFilter($event)"></modalFilters>
+  
+  </ion-item>
+  <div *ngIf="tuttiLuoghi">
+    
     <ion-list >
       <ion-list-header>
         <ion-text>

@@ -19,10 +19,11 @@ export class ModalLoginComponent  {
   async showModal() {
     const modal = await this.modalCtrl.create({
       component: AccessPage,
-      backdropDismiss: true,
+      //backdropDismiss: true,
       cssClass: 'login-authentication',
       animated: true,
-      showBackdrop: true
+      showBackdrop: true,
+      swipeToClose: true,
     });
     return await modal.present();
     }

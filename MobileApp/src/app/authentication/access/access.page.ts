@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
+import { ValidationPatterns } from 'src/app/models/enumerations/patterns';
 @Component({
   selector: 'access',
   templateUrl: './access.page.html',
@@ -15,7 +16,7 @@ export class AccessPage {
       private navCtrl: NavController,
       private authService: AuthService) {
   }
-
+  validationPatterns = ValidationPatterns; 
   loginError: boolean;
   // fabio.mar@live.it
   // 1234
@@ -34,5 +35,9 @@ export class AccessPage {
     }, () => {
       this.loginError = true;
     });
+  }
+
+  dismissModal() {
+    this.modalController.dismiss();
   }
 }
