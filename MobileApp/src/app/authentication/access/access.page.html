@@ -1,14 +1,50 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="loginBlock">
   <form #form="ngForm" (ngSubmit)="login(form)" method="post">
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input ngModel type="email" name="email" required="true"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
-      <ion-input ngModel type="password" name="password" required="true"></ion-input>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col style="text-align: center; font-size: 10em;">
+          <div class="login-icon">
+            <ion-icon  name="person-circle"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input ngModel type="email" name="email" required="true" [pattern]="validationPatterns.email"></ion-input>
+          </ion-item>
+        </ion-col>
+      
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <error-validation-msg [form]="form.control" field="email"></error-validation-msg>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input ngModel type="password" name="password" required="true" [pattern]="validationPatterns.password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <error-validation-msg [form]="form.control" field="password"></error-validation-msg>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
     <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Accedi</ion-button>
     <div *ngIf="loginError" color="danger">Autenticazione fallita</div>
