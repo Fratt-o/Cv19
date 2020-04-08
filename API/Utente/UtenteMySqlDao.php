@@ -24,7 +24,20 @@
             throw new Exception('Errore: Utente non registrato');
         }
 
-        public function isAdmin($email,$psw){}
+        public function isAdmin($email,$psw){
+            $db = new Database();
+            $query="SELECT email, username, password, avatar, nome ,cognome FROM Utente WHERE isAdmin=1 AND email='".$email."'";
+            $result = $db->select($query);
+            $numRow = $result->rowCount();
+            if($numRow >0){
+                $row = $result->fetch(PDO::FETCH_ASSOC);
+ 
+                $user = new Utente("",$row);
+                if(password_verify($psw,$user->password)) return $user;
+            }
+            return null;
+
+        }
         public function emailExist($email)
         {
             $db = new Database();
