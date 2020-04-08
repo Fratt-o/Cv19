@@ -46,11 +46,15 @@ class Database{
     
         return $stmt;
     }
-    public function insert($insert){
+    public function insert($insert,$param){
+
         $stmt = $this->conn->prepare($insert);
-    
+
+        foreach($param as $key => $value) {
+
+            $stmt->bindParam(":".$key, $param[$key]);
+        }
         $stmt->execute();
-    
         return $stmt;
     }
 

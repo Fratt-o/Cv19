@@ -4,10 +4,40 @@
     include_once 'UtenteDao.php';
     class UtenteMySqlDao implements UtenteDao{
 
-        public function readAllUsers(){}
-        public function createUser($user){}
+
+
+        public function createUser($user){
+            $db = new Database();
+            $query = "INSERT INTO Utente
+            SET
+                nome = :nome,
+                cognome = :cognome,
+                email = :email,
+                avatar = :avatar,
+                password = :password,
+                username = :username";
+            $result = $db->insert($query,$user);
+
+            if ($result == true){
+                return true;
+            }
+            throw new Exception('Errore: Utente non registrato');
+        }
+
         public function isAdmin($email,$psw){}
-        public function isValidUsername($username){}
+        public function emailExist($email)
+        {
+            $db = new Database();
+            $query = 
+				"SELECT email, username, password, avatar, nome ,cognome
+				FROM Utente
+                WHERE email = '".$email."'";
+            $result = $db->select($query);
+            $numRow = $result->rowCount();
+            if($numRow >0)return true;
+            return false;
+        }
+
         public function isRegistred($email,$psw){
 
             $db = new Database();
@@ -26,6 +56,7 @@
             }
             return null;
         }
+
     }
 
 

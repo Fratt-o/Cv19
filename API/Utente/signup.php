@@ -35,17 +35,6 @@ $response = array("error" => FALSE);
 $data = $_POST;
 
 if (isset($data)){
-/*if (isset(filter_input(INPUT_POST, $email, FILTER_VALIDATE_EMAIL)) && isset(filter_input(INPUT_POST, $nome, FILTER_SANITIZE_STRING)) && 
-        isset(filter_input(INPUT_POST, $cognome, FILTER_SANITIZE_STRING)) && isset(filter_input(INPUT_POST, $password)) &&
-        isset(filter_input(INPUT_POST, $username))) {*/
- 
-    // receiving the post params
-	
-	/*$nome = $data->nome;
-	$cognome = $data->cognome;
-	$email = $data->email;
-	$username = $data->username;
-	$password = $data->password;*/
 	
 	$nome = $data["nome"];
 	$cognome = $data["cognome"];
@@ -55,31 +44,6 @@ if (isset($data)){
 	
 
 
-
-	//VALIDARE I DATI IN INGRESSO CORRETTAMENTE 
-	
-   /* if (ctype_alpha(str_replace(' ', '', "nome")) === false) {
-        if((preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', "nome"))){
-            $errors[] = 'Il nome può contenere solo lettere o spazi.';
-             http_response_code("406");       
-        }
-       }
-    else{
-        $nome = filter_input(INPUT_POST, $nome, FILTER_SANITIZE_STRING);       
-    }
-	$cognome= filter_input(INPUT_POST, 'cognome', FILTER_SANITIZE_STRING);
-    if (ctype_alpha(str_replace(' ', '', $cognome)) === false) {
-        if((preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', "cognome"))){
-         $errors[] = 'Il nome può contenere solo lettere o spazi.';
-         http_response_code("406");
-       }
-    }
-    else{
-        $cognome= filter_input(INPUT_POST, 'cognome', FILTER_SANITIZE_STRING);
-    }
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $password = filter_input(INPUT_POST, 'password');  
-	$username = filter_input(INPUT_POST, 'username');*/
     if (!$register->isValidUsername($username)){
 		$response["error"] = TRUE;
         $response["error_msg"] = "L'username non è valido";
