@@ -23,8 +23,8 @@
     include_once '../Utility/jwtUtility.php';
     include_once '../Utility/validation.php';
 
-    $data = json_decode(file_get_contents("php://input"));
-    
+    //$data = json_decode(file_get_contents("php://input"));
+    $data = (Object)$_POST;
     $daoFactory = DAOFactory::getDao();
 
     try{
@@ -51,8 +51,11 @@
         }
          
     }catch(Exception $E){
-        echo $E->getMessage();
-    }
+        $response = array();
+        $response['error'] = true;
+        $response['message'] = $E->getMessage();
+        echo json_encode($response);
+	}
 
 
     function uploadFile($file, $name){
@@ -62,7 +65,8 @@
         }
         $fileName = $_FILES['file']['name'];
         $fileTmpName  = $_FILES['file']['tmp_name'];
-        $fileExtension = strtolower(end(explode('.',$fileName)));
+        $exploded = explode('.',$fileName);
+        $fileExtension = strtolower(end($exploded));
         $currentDir = getcwd();
         $uploadDir = "$currentDir/../Immagini/Utente";
         $uploadPath = "$uploadDir/$name.$fileExtension";
