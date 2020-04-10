@@ -13,10 +13,22 @@ class Recensioni{
     public $fkutente;
     public $fkstruttura;
     protected $isEnable;
+    public $username;
+    public $avatar;
 	public $nomeMostrato;
     
-    public function __construct($db){
-	$this->conn = $db;
+    public function __construct($db,$review=null){
+    $this->conn = $db;
+        if($review != null){
+            $this->voto = $review['voto'];
+            $this->testo = $review['testo'];
+            $this->titolo = $review['titolo'];
+            $this->fkutente = $review['fkutente'];
+            $this->nomeMostrato = $review['nomeMostrato'];
+            $this->username =$review['username'];
+            $this->fkstruttura = $review['fkstrutture'];
+            $this->avatar = $review['avatar'];
+        }
 	}
     
     function read($idStruttura){

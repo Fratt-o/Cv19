@@ -3,11 +3,11 @@
     interface RecensioniDao {
 
 
-        public function readAllReview();
+        public function readAllReview($idStruttura);
 
         public function readReviewToModerate();
         
-        public function insertReview(); 
+        public function insertReview($review); 
     
     }
 
