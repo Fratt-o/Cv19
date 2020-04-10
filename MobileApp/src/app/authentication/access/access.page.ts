@@ -19,10 +19,7 @@ export class AccessPage {
   }
   validationPatterns = ValidationPatterns; 
   loginError: boolean;
-  // fabio.mar@live.it
-  // 1234
 
-  //TODO: Aggiungere nell'html la validazione dell'email
   login(form: NgForm) {
     if (!form.valid) {
       return;
