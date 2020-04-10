@@ -10,12 +10,13 @@ import { ValidationPatterns } from 'src/app/models/enumerations/patterns';
 
 
 const ErrorsDict = {
-    required: 'Campo Obbligatorio',
+    required: 'Campo obbligatorio',
     maxlength: 'Superata lunghezza massima',
-    minlength: 'Lunghezza troppo piccola',
+    minlength: 'Lunghezza del testo troppo breve',
     email: 'Email non valida',
-    password: 'La password deve avere....',
-    username: 'Username non pu contenere...',
+    password: 'La password deve avere almeno un carattere minuscolo, maiuscolo, un numero ed una lunghezza minima di 8 caratteri',
+    username: 'L\'username può contenere solo caratteri e numeri e deve avere una lunghezza minima di 3',
+    nameString: 'Testo non valido',
     pattern: '',
     min: 'Devi selezionare almeno una stella'
 };
@@ -60,6 +61,8 @@ export class ErrorValidationComponent  {
         Object.keys(errors).forEach(k =>{
             if(k === 'pattern') {
                 if(errors[k].requiredPattern === ValidationPatterns.email) {
+                    errorsArray.push(ErrorsDict['nameString']);
+                } else if(errors[k].requiredPattern === ValidationPatterns.email) {
                     errorsArray.push(ErrorsDict['email']);
                 } else if(errors[k].requiredPattern === ValidationPatterns.password) {
                     errorsArray.push(ErrorsDict['password']);

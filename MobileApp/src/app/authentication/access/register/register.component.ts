@@ -4,6 +4,7 @@ import {AuthService} from '../../../services/auth.service';
 import {NgForm} from '@angular/forms';
 import {RegisterModel} from '../../../models/interfaces/registermodel';
 import { PhotoService } from 'src/app/services/photo.service';
+import { ValidationPatterns } from 'src/app/models/enumerations/patterns';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent {
               private navCtrl: NavController,
               private authService: AuthService,
               public photoService: PhotoService) {}
+  validationPatterns = ValidationPatterns;
   error = false;
   photo: any;
   photoBase64: any;

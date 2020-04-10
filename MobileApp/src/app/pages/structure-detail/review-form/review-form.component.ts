@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -9,7 +9,7 @@ import { ServerResponse } from 'src/app/models/interfaces/serverResponse';
   templateUrl: './review-form.component.html',
   styleUrls: ['./review-form.component.scss'],
 })
-export class ReviewFormComponent implements OnInit {
+export class ReviewFormComponent{
 
   form: FormGroup;
   rating: number;
@@ -17,14 +17,12 @@ export class ReviewFormComponent implements OnInit {
   reviewSent = false;
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
     this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(255)])],
+      title: ['', Validators.compose([Validators.required, Validators.maxLength(40), Validators.minLength(2)])],
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1000), Validators.minLength(10)])],
       username: [false],
       rating: [0, Validators.compose([Validators.min(1), Validators.max(5)])]
     });
    }
-
-  ngOnInit() {}
 
   sendReview() {
     if(this.form.invalid) {

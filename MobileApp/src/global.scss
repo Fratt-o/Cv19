@@ -37,3 +37,9 @@
 pwa-camera-modal-instance{
   z-index: 20005;
 }
+
+.modal-header {
+  &:after {
+    display: none;
+  }
+}
