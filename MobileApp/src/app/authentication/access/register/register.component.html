@@ -1,38 +1,87 @@
+
+<ion-header translucent class="modal-header">
+  <ion-toolbar>
+    <ion-buttons style="visibility: hidden;" slot="start">
+      <ion-button>
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center; font-weight: bold;">Registrazione</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
 <ion-content class="loginBlock">
   <form #form="ngForm" (ngSubmit)="register(form)" method="post">
-    <ion-item>
-      <ion-label position="floating" required="true">Nome</ion-label>
+    <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center; font-size: 5em;">
+        <div class="login-icon">
+          <ion-icon name="key-sharp"></ion-icon>
+        </div>
+</ion-col>
+</ion-row>
+    <ion-row>
+<ion-col>
+<ion-item>
+      <ion-label position="floating" required="true">Nome <ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="name" name="name"></ion-input>
     </ion-item>
+</ion-col>
+</ion-row>
 
-    <ion-item>
-      <ion-label position="floating" required="true">Cognome</ion-label>
+    <ion-row>
+<ion-col>
+<ion-item>
+      <ion-label position="floating" required="true">Cognome <ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="surname" name="surname"></ion-input>
     </ion-item>
+</ion-col>
+</ion-row>
 
-    <ion-item>
-      <ion-label position="floating" required="true">E-mail</ion-label>
+    <ion-row>
+<ion-col>
+<ion-item>
+      <ion-label position="floating" required="true">E-mail <ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="email" name="email"></ion-input>
     </ion-item>
+</ion-col>
+</ion-row>
 
-    <ion-item>
-      <ion-label position="floating" required="true">Password</ion-label>
+    <ion-row>
+<ion-col>
+<ion-item>
+      <ion-label position="floating" required="true">Password <ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="password" name="password"></ion-input>
     </ion-item>
+</ion-col>
+</ion-row>
 
-    <ion-item>
-      <ion-label position="floating" required="true">Username</ion-label>
+    <ion-row>
+<ion-col>
+<ion-item>
+      <ion-label position="floating" required="true">Username <ion-text color="danger">*</ion-text></ion-label>
       <ion-input ngModel type="username" name="username"></ion-input>
     </ion-item>
+</ion-col>
+</ion-row>
 
-    <ion-item>
+    <ion-row>
+<ion-col>
+<ion-item class="camera-item">
       <ion-icon name="camera" (click)="takePhoto()"></ion-icon>
       <ion-icon name="image-outline" (click)="pickFromGallery()"></ion-icon>
       <ion-thumbnail slot="end">
         <img *ngIf="photoBase64" [src]="photoBase64" />
       </ion-thumbnail>
     </ion-item>
-
+</ion-col>
+</ion-row>
+</ion-grid>
     <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Conferma</ion-button>
   </form>
   <div color="danger" *ngIf="error">Registrazione fallita</div>

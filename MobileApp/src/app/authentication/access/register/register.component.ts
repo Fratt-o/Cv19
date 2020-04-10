@@ -57,7 +57,7 @@ export class RegisterComponent {
     });
 
     
-  }
+  } 
 
   async takePhoto() {
     this.photo = await this.photoService.takePhoto();
@@ -67,6 +67,10 @@ export class RegisterComponent {
   async pickFromGallery() {
     this.photo = await this.photoService.pickFromGallery();
     this.photoBase64 = await this.photoService.toBase64(this.photo.webPath);
+  }
+
+  dismissModal() {
+    this.modalController.dismiss();
   }
 }
 
