@@ -1,10 +1,18 @@
-<ion-header translucent>
+<ion-header translucent class="modal-header">
+ 
   <ion-toolbar>
+    <ion-buttons style="visibility: hidden;" slot="start">
+      <ion-button>
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center; font-weight: bold;">Login</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 <ion-content class="loginBlock">
@@ -44,13 +52,23 @@
           <error-validation-msg [form]="form.control" field="password"></error-validation-msg>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Accedi</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-text>
+            <ion-label>Non hai un account?</ion-label>
+            <modalRegister></modalRegister>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      
     </ion-grid>
 
-    <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Accedi</ion-button>
-    <div *ngIf="loginError" color="danger">Autenticazione fallita</div>
+    
   </form>
-  <ion-text>
-    <ion-label>Non hai un account?</ion-label>
-    <modalRegister></modalRegister>
-  </ion-text>
+ 
 </ion-content>

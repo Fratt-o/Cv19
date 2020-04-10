@@ -17,6 +17,7 @@ ion-toolbar:last-of-type {
 }
 
 .login-icon {
+  flex: 1;
   ion-icon{
     filter: opacity(0.08);
   }
