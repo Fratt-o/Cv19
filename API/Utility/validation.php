@@ -3,10 +3,10 @@
     class validation {
 
         private static $minString = 2;
-        private static $minText=5;
-        private static $maxText= 500;
-        private static $maxString = 20;
-        private static $minRating = 0;
+        private static $minText=10;
+        private static $maxText= 1000;
+        private static $maxString = 40;
+        private static $minRating = 1;
         private static $minPsw = 7;
         private static $maxRating = 5;
         
@@ -49,6 +49,15 @@
                 if(strlen($txt)>validation::$minText  && strlen($txt)< validation::$maxText) return $txt;
             }
             throw new Exception('Invalid Text');
+        }
+        public static function isValidInteger($int){
+            $result = validation::isEmpty($int);
+            if($result!= false){
+                if(filter_var($int,FILTER_VALIDATE_INT)){
+                    return $int;
+                }
+            }
+            throw new Exception('Invalid Integer');
         }
         public static function isValidRating($rating){
             $result = validation::isEmpty($rating);

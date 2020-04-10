@@ -45,14 +45,56 @@
             echo json_encode($result); 
             
         }catch(Exception $E){
-
+            http_response_code(501);
+            $result['error'] = true;
+            $result['data'] = $E->getMessage(); 
+            echo json_encode($result); 
         }
 
     }
 
     function doPost(){
+        try{
+            $jwt = new jwtUtility();
+            $token = $jwt->getBearerToken();
 
-        echo "richiesta post";
+            // Non mi è arrivato il token
+
+            if(!isset($token)) {
+                // set response code
+                http_response_code(401);
+             
+                // tell the user login failed
+                echo json_encode(array("error" =>  true, "data" => array(),  "message" => "Missing jwt authorization header"));
+                exit();
+            }
+
+            $dataJWT = $jwt->getDecondedToken($token);
+            $data = json_decode(file_get_contents("php://input"));
+
+            $review['voto'] = validation::isValidRating($data->voto);
+            $review['titolo']=validation::isValidString($data->titolo,"titolo");
+            $review['testo'] = validation::isValidText($data->testo);
+            $review['fkutente'] = validation::isEmail($dataJWT->data->email);
+            $review['fkstrutture'] = validation::isValidInteger($data->struttura);
+            $nomeCompleto = $dataJWT->data->nome." ".$dataJWT->data->cognome;
+            $review['nomeMostrato'] =  $data->mostraUsername ? $dataJWT->data->username : $nomeCompleto;
+            
+            $factoryDao = DAOFactory::getDao();
+            $recensioniDao= $factoryDao->getRecensioniDao();
+            $result=$recensioniDao->insertReview($review);
+            
+            http_response_code(200); 
+            echo json_encode(array("error" =>  false, "data" => "recensione Inserita con successo")); 
+            
+        }catch(Exception $E){
+            http_response_code(501);
+            $result['error'] = true;
+            $result['data'] = $E->getMessage(); 
+            echo json_encode($result); 
+        }
+        
+        
     }
 
 
