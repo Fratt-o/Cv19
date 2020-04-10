@@ -17,8 +17,8 @@ export class ReviewFormComponent{
   reviewSent = false;
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {
     this.form = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(255)])],
+      title: ['', Validators.compose([Validators.required, Validators.maxLength(40), Validators.minLength(2)])],
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1000), Validators.minLength(10)])],
       username: [false],
       rating: [0, Validators.compose([Validators.min(1), Validators.max(5)])]
     });
