@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { RegisterComponent } from './register/register.component';
 import { NgForm } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
@@ -14,7 +14,8 @@ export class AccessPage {
   constructor(
       private modalController: ModalController,
       private navCtrl: NavController,
-      private authService: AuthService) {
+      private authService: AuthService,
+      private toastController: ToastController) {
   }
   validationPatterns = ValidationPatterns; 
   loginError: boolean;
@@ -32,12 +33,23 @@ export class AccessPage {
     this.authService.login(email, password).subscribe((res) => {
       this.loginError = false;
       this.modalController.dismiss();
+      this.presentToast('Login effettuato con successo', 'success');
     }, () => {
       this.loginError = true;
+      this.presentToast('Login fallito', 'danger'); 
     });
   }
 
   dismissModal() {
     this.modalController.dismiss();
+  }
+
+  async presentToast(message: string, type: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: type
+    });
+    toast.present();
   }
 }
