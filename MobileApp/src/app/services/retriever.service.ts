@@ -62,7 +62,7 @@ export class RetrieverService {
   }
 
     getReviews(idStruttura: number): Observable<Review[]> {
-      const url =  `${environment.apiBaseUrl}/Recensioni/read.php?idStruttura=${idStruttura}`;
+      const url =  `${environment.apiBaseUrl}/Recensioni/ControllerRecensioniApp.php?idStruttura=${idStruttura}`;
       return this.httpClient.get<ServerResponse>(url).pipe(
             map((reviewsRes) => {
               if(!reviewsRes.error) {
