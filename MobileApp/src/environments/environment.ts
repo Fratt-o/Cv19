@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiBaseUrl: 'http://cv19ing20.altervista.org/Cv19/API',
   apiLoginUrl: 'Utente/ControllerLogin.php',
-  apiRegisterUrl: 'Utente/signup.php',
+  apiRegisterUrl: 'Utente/ControllerRegistrazione.php',
   numAttractionsToRetrieve: 10
 };
 
