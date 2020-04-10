@@ -60,7 +60,7 @@ export class ErrorValidationComponent  {
         const errorsArray = [];
         Object.keys(errors).forEach(k =>{
             if(k === 'pattern') {
-                if(errors[k].requiredPattern === ValidationPatterns.email) {
+                if(errors[k].requiredPattern === ValidationPatterns.nameString) {
                     errorsArray.push(ErrorsDict['nameString']);
                 } else if(errors[k].requiredPattern === ValidationPatterns.email) {
                     errorsArray.push(ErrorsDict['email']);
