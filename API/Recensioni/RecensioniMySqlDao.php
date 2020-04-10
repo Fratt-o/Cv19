@@ -42,11 +42,19 @@
             . "WHERE abilitazioneadmin = 0";
 
             $result = $this->db->select($query);
-            $numRow = $result->rowCount();
-            if($numRow >0)
-                return $result;
-            else 
-                return null;
+            
+            $recensioni = array();
+            $recensioni['data'] = array();
+            if ($result != null){
+                
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    
+                    $recensione= new Recensioni(" ",$row);
+                    array_push($recensioni['data'],$recensione);
+                }
+            } 
+            $recensioni['error'] = false;
+            return $recensioni;
         }
         
         public function insertReview($review){
