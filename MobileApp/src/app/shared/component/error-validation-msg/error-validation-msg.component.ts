@@ -16,7 +16,7 @@ const ErrorsDict = {
     email: 'Email non valida',
     password: 'La password deve avere almeno un carattere minuscolo, maiuscolo, un numero ed una lunghezza minima di 8 caratteri',
     username: 'L\'username può contenere solo caratteri e numeri e deve avere una lunghezza minima di 3',
-    name: 'Testo non valido',
+    nameString: 'Testo non valido',
     pattern: '',
     min: 'Devi selezionare almeno una stella'
 };
@@ -61,7 +61,7 @@ export class ErrorValidationComponent  {
         Object.keys(errors).forEach(k =>{
             if(k === 'pattern') {
                 if(errors[k].requiredPattern === ValidationPatterns.email) {
-                    errorsArray.push(ErrorsDict['name']);
+                    errorsArray.push(ErrorsDict['nameString']);
                 } else if(errors[k].requiredPattern === ValidationPatterns.email) {
                     errorsArray.push(ErrorsDict['email']);
                 } else if(errors[k].requiredPattern === ValidationPatterns.password) {
