@@ -35,7 +35,7 @@ export class ReviewFormComponent{
       voto: this.rating,
       struttura: this.idStruttura
     }
-    const url =  `${environment.apiBaseUrl}/Recensioni/writerecensione.php`;
+    const url =  `${environment.apiBaseUrl}/Recensioni/ControllerRecensioniApp.php`;
     const headers = {
       headers: {
         'Authorization': `Bearer ${this.retrieveJWT()}`
