@@ -6,7 +6,7 @@ class Recensioni{
     private $conn;
   //  private $table_rec = "recensioni";
    // private $table_user = "utente";
-    protected $idRecensione;
+    public $idRecensione;
     public $voto;
     public $titolo;
     public $testo;
@@ -23,6 +23,9 @@ class Recensioni{
             $this->voto = $review['voto'];
             $this->testo = $review['testo'];
             $this->titolo = $review['titolo'];
+            if($review['idrecensione']!= null){
+                $this->idRecensione = $review['idrecensione'];
+            }
             $this->fkutente = $review['fkutente'];
             $this->nomeMostrato = $review['nomeMostrato'];
             $this->username =$review['username'];

@@ -1,5 +1,9 @@
+<?php 
+        session_start();
+?>
 <!doctype html>
 <html>
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -40,7 +44,7 @@
           }
       </style>
       <?php 
-        session_start();
+        
         if($_SESSION['username']==null){
             http_response_code(404);
         }
@@ -73,7 +77,8 @@
                 <div class="col-sm-6 offset-sm-2  order-sm-2 pad ">
                     
                     <div class="testo">
-                        <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="ModerationPannel.php">Modera Recensioni</a>
+                        <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="http://cv19ing20.altervista.org/Cv19/API/Recensioni/adminModerateController.php">Modera Recensioni</a>
+                        <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="ModerationPannel.php">Modera Recensioni 2</a>
                         <a role="button" class="btn btn-outline-primary btn-lg btn-block" href="StatisticPannel.php">Visualizza Statistiche</a>
                     </div>
               

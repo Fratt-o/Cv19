@@ -2,6 +2,7 @@
     include_once '../config/databaseconnect.php'; 
     include_once 'Recensioni.php';
     include_once 'RecensioniDao.php';
+    require __DIR__."/databaseconnect.php";
 
     class RecensioniMySqlDao implements RecensioniDao{
 
@@ -41,19 +42,22 @@
             . "ON a.fkutente = b.email " 
             . "WHERE abilitazioneadmin = 0";
 
-            $result = $this->db->select($query);
+            $query2="SELECT *  "
+            . "FROM Recensioni a " 
+            . "WHERE abilitazioneadmin = 0";
+            $result = $this->db->select($query2);
             
             $recensioni = array();
-            $recensioni['data'] = array();
+            
             if ($result != null){
                 
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)){
                     
                     $recensione= new Recensioni(" ",$row);
-                    array_push($recensioni['data'],$recensione);
+                    array_push($recensioni,$recensione);
                 }
             } 
-            $recensioni['error'] = false;
+            
             return $recensioni;
         }
         

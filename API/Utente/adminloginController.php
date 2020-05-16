@@ -5,6 +5,7 @@
 	include_once '../config/DAOFactory.php';
 	include_once '../Utente/UtenteMySqlDao.php';
 
+	$daoFactory = DAOFactory::getDao();
 
 	try{
 		$user['email']=validation::isEmail($_POST['email']);

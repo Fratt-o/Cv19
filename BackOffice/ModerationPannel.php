@@ -1,5 +1,10 @@
+<?php
+        session_start();
+        include_once("../API/Recensioni/ControllerAdmin.php");
+?>
 <!doctype html>
 <html>
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -46,7 +51,6 @@
           }
       </style>
         <?php 
-        session_start();
         if($_SESSION['username']==null){
             http_response_code(404);
         }
@@ -63,6 +67,8 @@
                         </button>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item " href="adminPannel.php"onclick="location.href='adminPannel.php';">Home</a>
+                            
                             <a class="dropdown-item " href="index.php"onclick="location.href='SessionDestroy.php';">Logout</a>
                         </div>
                     
@@ -82,76 +88,88 @@
                     
                     <hr>
                     
-                    
-                    <div class="card" >
+                    <?php 
                         
-                        <div class="row">
-                            
-                            <div  class="col-sm-1 offset-sm-3">
-                                
-                                <p>Im</p>
-                            </div>
-                            
-                            <div class="col-sm-2">
-                                
-                                <h6>Alefedo</h6>
-                                
-                            </div>
-                            
-                            <div class="col-sm-3">
-                                
-                                <span style="font-size: 12pt; ">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
+                        $controlller = new ControllerAdmin();
 
-                                        
-                            </div>
-                           
-                            
-                        </div>
-                        
-                        <div class="row">
-                            
-                            
-                            <div class="col-sm-2 offset-sm-2">
+                        $data = $controlller->getReview();
+                        if ( isset($data)){
+                            echo "le recensioni da moderare sono :\n";
+                            echo $data;
+                            $value = array_pop($data);
+                            while ($value != NULL){
+                    ?>
+                            <div class="card" >
                                 
-                                <p>
-                                    Immagine
-                                    Immagine
-                                </p>
-                                
-                            </div>
-                            
-                            <div class="col-sm-5">
-                                
-                                <p>
-                                    This paragraph
-                                    contains      a lot of spaces
-                                    in the source     code,
-                                    but the    browser 
-                                    ignores it.
+                                <div class="row">
                                     
-                                </p>
+                                    <div  class="col-sm-1 offset-sm-3">
+                                        
+                                        <p>Im</p>
+                                    </div>
+                                    
+                                    <div class="col-sm-2">
+                                        
+                                        <h6><?php if(isset($value->nomeMostrato)){
+                                            echo $value->nomeMostrato;
+                                        }else { echo $value->email;} ?></h6>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-sm-3">
+                                        
+                                        <span style="font-size: 12pt; ">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+
+                                                
+                                    </div>
                                 
+                                    
+                                </div>
+                                
+                                <div class="row">
+                                    
+                                    
+                                    <div class="col-sm-2 offset-sm-2">
+                                        
+                                        <p>
+                                            <?php echo $value->titolo; ?>
+                                        </p>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-sm-5">
+                                        
+                                        <p>
+                                            <?php echo $value->testo; ?>
+                                            
+                                        </p>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-sm-3">
+                                        
+                                        <span  class="chose"style="font-size: 24pt; ">
+                                            <i class="fas fa-check"></i>
+                                            <i class="fas fa-times"></i>
+                                        </span>
+                                        
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            
-                            <div class="col-sm-3">
+                            <?php 
                                 
-                                <span  class="chose"style="font-size: 24pt; ">
-                                    <i class="fas fa-check"></i>
-                                    <i class="fas fa-times"></i>
-                                </span>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-              
-              
+                                $value = array_pop($data);
+                                }
+                            } else { echo "Non ci sono recensioni da moderare";} 
+                            ?>
+                
                     <hr>
                 </div>
            
