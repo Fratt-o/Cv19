@@ -10,7 +10,7 @@
 
         public function __construct()
          {
-            $this->db = new Database();
+            $this->db = new Database1();
          } 
 
          public function readAllReview($idStruttura){
@@ -33,6 +33,22 @@
             } 
             $recensioni['error'] = false;
             return $recensioni;
+        }
+        public function approvaReview($id){
+
+            $query = "UPDATE Recensioni"
+            ." SET abilitazioneadmin = 1" 
+            ." WHERE idrecensione = ".$id;
+           
+            $result = $this->db->select($query);
+            return $result; 
+        }
+
+        public function deleteReview($id){
+
+            $query ="DELETE FROM Recensioni WHERE idrecensione =".$id;
+            $result = $this->db->select($query);
+            return $result;
         }
 
         public function readReviewToModerate(){

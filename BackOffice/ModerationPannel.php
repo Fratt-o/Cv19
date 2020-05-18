@@ -19,7 +19,19 @@
   </head>
   <body>
       <style>
-          
+          .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 5px 5px;
+            
+            cursor: pointer;
+           }
+
+            /* Darker background on mouse-over */
+            .btn:hover {
+            background-color: RoyalBlue;
+           }
           .pad{
               
               padding-top: 100px;
@@ -50,6 +62,26 @@
               color : #007bff;
           }
       </style>
+      <script>
+          function alertApprovazione(id){
+            var txt;
+            if (confirm("Sicuro di voler apporovare la recensione?")) {
+                
+                window.location= "http://cv19ing20.altervista.org/Cv19/BackOffice/approvazione.php?id="+id;
+            } else {
+                txt = "You pressed Cancel!";
+            }
+          }
+
+          function alertRifiuto(id){
+            var txt;
+            if (confirm("Sicuro di voler scartare la recensione?")) {
+                window.location= "http://cv19ing20.altervista.org/Cv19/BackOffice/cancellaRecensione.php?id="+id;
+            } else {
+                txt = "You pressed Cancel!";
+            } 
+          }
+      </script>
         <?php 
         if($_SESSION['username']==null){
             http_response_code(404);
@@ -94,8 +126,7 @@
 
                         $data = $controlller->getReview();
                         if ( isset($data)){
-                            echo "le recensioni da moderare sono :\n";
-                            echo $data;
+                            
                             $value = array_pop($data);
                             while ($value != NULL){
                     ?>
@@ -103,27 +134,27 @@
                                 
                                 <div class="row">
                                     
-                                    <div  class="col-sm-1 offset-sm-3">
-                                        
-                                        <p>Im</p>
-                                    </div>
                                     
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-5 offset-sm-2">
                                         
-                                        <h6><?php if(isset($value->nomeMostrato)){
+                                        <h6><?php if(!empty($value->nomeMostrato)){
                                             echo $value->nomeMostrato;
-                                        }else { echo $value->email;} ?></h6>
+                                        }else { echo $value->fkutente;} ?></h6>
                                         
                                     </div>
                                     
                                     <div class="col-sm-3">
                                         
                                         <span style="font-size: 12pt; ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <?php 
+                                                for($i=0;$i < $value->voto; $i++){
+                                            ?>
+                                                <i class="fas fa-star"></i>
+                                            <?php } ?>
+                                            <?php for($x=$value->voto;$x<5;$x++){ ?>
+                                            
+                                                <i class="far fa-star"></i>
+                                            <?php } ?>
                                         </span>
 
                                                 
@@ -155,8 +186,9 @@
                                     <div class="col-sm-3">
                                         
                                         <span  class="chose"style="font-size: 24pt; ">
-                                            <i class="fas fa-check"></i>
-                                            <i class="fas fa-times"></i>
+
+                                            <button onclick="alertApprovazione(<?php echo $value->idRecensione ?>)" class="btn"><i class="fas fa-check"></i></button>
+                                            <button onclick="alertRifiuto(<?php echo $value->idRecensione ?>)" class="btn"><i class="fas fa-times"></i></button>
                                         </span>
                                         
                                     </div>

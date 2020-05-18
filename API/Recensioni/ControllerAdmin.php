@@ -15,6 +15,18 @@ class ControllerAdmin {
         }
         return true;
     }
+
+    public function approvaRecensione($id){
+        $recensione= new RecensioniMySqlDao();
+        $result = $recensione->approvaReview($id);
+        return $result;
+    }
+    public function delateReview($id){
+        $recensione= new RecensioniMySqlDao();
+        $result = $recensione->deleteReview($id);
+        return $result;
+        
+    }
     public function getReview(){ 
         if($this->isAdmin()){
 
