@@ -1,3 +1,17 @@
+<?php
+        session_start();
+        include_once("../API/Struttura/ControllerAdminStrutture.php");
+        $controller= new ControllerAdmin();
+        $data = $controller->getStats();
+        $n=0;
+        
+        $value[$n] = array_pop($data);
+        
+        while($value != NULL){
+            $n++;
+            $value[$n] = array_pop($data);
+        }
+?>
 <!doctype html>
 <html>
   <head>
@@ -15,7 +29,7 @@
           
           .pad{
               
-              padding-top: 100px;
+              padding-top: 30px;
               padding-bottom:100px;
           }
           headersetting{
@@ -47,11 +61,12 @@
                     <div class="dropdown">
                         
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Benvenuto, Fratto
+                            Benvenuto, <?php echo $_SESSION['username'];?>
                         </button>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item " href="index.php">Logout</a>
+                            <a class="dropdown-item " href="adminPannel.php"onclick="location.href='adminPannel.php';">Home</a>
+                            <a class="dropdown-item " href="index.php"onclick="location.href='SessionDestroy.php';">Logout</a>
                         </div>
                     
                     </div>
@@ -66,32 +81,22 @@
            
                 <div class="col-sm-6 offset-sm-2  order-sm-2 pad ">
                     
-                    
-              
-              
-           
-                </div>
-           
-                <div class="col-sm-3 col-xs-3 order-sm-1 bordoindex ">
-                    <div class="input-group mb-3" style="padding-top:50px">
-                          <input type="text" class="form-control" placeholder="Search " aria-label="'Search" aria-describedby="button-addon2">
-                          <div class="input-group-append">
-                              <button class="btn btn-primary " >
-                                  Cerca
-                              </button>
-                          </div>
-                    </div>
+                  <h4 align="center" class="contenitore testo" >Pagina delle Statistiche</h4>
+                
                     <hr>
-                    <div class="list-group" style="padding-bottom: 50px;color:white;">
-                          <button type="button" class="list-group-item list-group-item-action list-group-item-primary ">
-                            Stuttura 1
-                          </button>
-                          <button type="button" class="list-group-item list-group-item-action list-group-item-primary ">Stuttura 2</button>
-                          <button type="button" class="list-group-item list-group-item-action list-group-item-primary">Stuttura 3</button>
-                          <button type="button" class="list-group-item list-group-item-action list-group-item-primary">Stuttura 4</button>
-                          <button type="button" class="list-group-item list-group-item-action list-group-item-primary" >Stuttura 5</button>
-                </div>
+                        <?php 
+                            for($i=0;$i<10;$i++){
 
+                            
+                            ?>
+                                <button><?php echo $value[$i]->nomestruttura?></button>
+                        <?php }?>
+                        
+                </div>
+           
+                <div class="col-sm-2 col-xs-3 order-sm-1 bordoindex ">
+                   
+                    
           
                 </div>    
             

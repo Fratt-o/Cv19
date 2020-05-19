@@ -44,6 +44,25 @@
             return $result; 
         }
 
+        public function GetReview(){
+            $query =  "SELECT `idstruttura`,`nomestruttura`,`mediavoto` FROM `Struttura` ORDER BY `mediavoto` ASC ";
+            $result = $this->db->select($query);
+            $recensioni = array();
+            
+            if ($result != null){
+                
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    
+                    $recensione= new Recensioni(" ",$row);
+                    array_push($recensioni,$recensione);
+                }
+            }
+            return $recensioni; 
+        }
+
+
+        
+
         public function deleteReview($id){
 
             $query ="DELETE FROM Recensioni WHERE idrecensione =".$id;

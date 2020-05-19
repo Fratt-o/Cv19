@@ -27,6 +27,24 @@ class ControllerAdmin {
         return $result;
         
     }
+    public function getStats()
+    {
+        if($this->isAdmin()){
+            
+            try {
+
+                $recensione = new RecensioniMySqlDao();
+                $result = $recensione->GetReview();
+                return $result;
+
+            }catch(Exception $E){
+            
+                http_response_code(404); 
+                echo json_encode( array("message" => "Nessuna recensione trovata.") ); 
+            
+            }
+        }
+    }
     public function getReview(){ 
         if($this->isAdmin()){
 
