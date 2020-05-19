@@ -4,7 +4,7 @@ import {RetrieverService} from '../../services/retriever.service';
 import {Structure} from '../../models/class/structure';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
-
+declare var google;
 
 @Component({
   selector: 'app-structure-detail',
