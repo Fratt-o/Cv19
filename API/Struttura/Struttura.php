@@ -6,7 +6,7 @@ class Struttura
     {
     private $conn;
     private $table = "Struttura";
-    /*
+    
     public $idstruttura;
     public $nomestruttura;
     public $citta;
@@ -17,10 +17,15 @@ class Struttura
     public $telefono;
     public $latitudine;
     public $longitudine;
-    public $mediavoto;*/
+    public $mediavoto;
     //Costruttore
-    public function __construct($db){
-	$this->conn = $db;
+    public function __construct($db,$row = null){
+		$this->conn = $db;
+		if($row != null){
+				$this->idstruttura = $row['idstruttura'];
+				$this->nomestruttura = $row['nomestruttura'];
+				$this->mediavoto = $row['mediavoto'];
+		}
 	}
     
 	//Ciao dado
