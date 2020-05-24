@@ -4,6 +4,7 @@
     include_once '../Struttura/StrutturaMySqlDao.php';
     include_once '../config/databaseconnect.php';
     include_once '../Struttura/StrutturaDao.php';
+    include_once 'StrutturaDao';
     
     use DatabaseCon\Database;
     use PDO;

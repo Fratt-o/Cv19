@@ -1,7 +1,7 @@
 <?php 
-session_start();
-namespace ControllerAdmin;
 
+namespace ControllerAdmin;
+session_start();
 include_once "../Recensioni/RecensioniMySqlDao.php";
 include_once "../Recensioni/RecensioniDao.php";
 include "../config/DAOFactory.php";

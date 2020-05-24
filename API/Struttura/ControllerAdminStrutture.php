@@ -1,29 +1,30 @@
 <?php 
-    namespace ControllerAdmin;
-    use Dao\DAOFactory;
-    use Exception;
+    include_once "StrutturaMySqlDao.php";
+   
+use Dao\DAOFactory;
+use Dao\StrutturaMySqlDao;
+use Exception;
     session_start();
     class ControllerAdminStrutture{
         private $dao;
         
         public function __construct(){
-            
-
-            $this->dao = DAOFactory::getDao();
+           
         }
         private function isAdmin(){
-            if($_SESSION['username']==null){
+           /* if($_SESSION['username']==null){
                 return false;
-            }
+            }*/
             return true;
         }
         public function getStats()
         {
             if($this->isAdmin()){
                 
+                       
                 try {
     
-                    $strutturaDao = $this->dao->getStrutturaDao();
+                    $strutturaDao = new StrutturaMySqlDao();
                     $result = $strutturaDao->getStruttureStat();
                     return $result;
     

@@ -1,6 +1,7 @@
 <?php
         session_start();
         include_once("../API/Recensioni/ControllerAdmin.php");
+        use ControllerAdmin\ControllerAdmin;
 ?>
 <!doctype html>
 <html>

@@ -1,12 +1,12 @@
-<?php 
+<?php
+    namespace Dao;
+
     include_once '../config/databaseconnect.php'; 
     include_once 'Recensioni.php';
     include_once 'RecensioniDao.php';
     require __DIR__."/databaseconnect.php";
 
-    namespace Dao;
     use Model\Recensioni;
-    use DatabaseCon\Database;
     use Dao\RecensioniDao;
     use PDO;
     use Exception;
@@ -16,7 +16,7 @@
 
         public function __construct()
          {
-            $this->db = new Database();
+            $this->db = new Database1();
          } 
 
          public function readAllReview($idStruttura){

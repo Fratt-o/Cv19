@@ -1,8 +1,8 @@
 <?php
+namespace Model;
 
 header("Access-Control-Allow-Origin: *");
 
-namespace Model;
 class Recensioni{
     private $conn;
   //  private $table_rec = "recensioni";

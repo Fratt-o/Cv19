@@ -1,4 +1,5 @@
 <?php 
+        use ControllerAdmin\ControllerAdmin;
         session_start();
         include_once("../API/Recensioni/ControllerAdmin.php");
 
