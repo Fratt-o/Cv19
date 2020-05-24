@@ -1,9 +1,10 @@
 <?php 
+    namespace Dao;
     include_once '../Struttura/Struttura.php';
     include_once '../Struttura/StrutturaMySqlDao.php';
     include_once '../config/databaseconnect.php';
     include_once '../Struttura/StrutturaDao.php';
-    namespace Dao;
+    
     use DatabaseCon\Database;
     use PDO;
     use Model\Struttura;

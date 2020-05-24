@@ -1,11 +1,12 @@
 <?php 
 session_start();
+namespace ControllerAdmin;
+
 include_once "../Recensioni/RecensioniMySqlDao.php";
 include_once "../Recensioni/RecensioniDao.php";
 include "../config/DAOFactory.php";
 require __DIR__."/RecensioniMySqlDao.php";
 
-namespace ControllerAdmin;
 use Dao\RecensioniMySqlDao;
 use Exception;
 class ControllerAdmin {
