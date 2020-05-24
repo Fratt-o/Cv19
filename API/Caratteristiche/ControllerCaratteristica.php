@@ -16,7 +16,7 @@ if ($method == "OPTIONS") {
     die();
 } 
     include_once '../config/DAOFactory.php';
-    
+    use Dao\DAOFactory;
     $daoFactory = DAOFactory::getDao();
     try {
         $CaratDao = $daoFactory->getCaratteristicaDao();

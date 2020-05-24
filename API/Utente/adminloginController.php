@@ -4,7 +4,7 @@
 	include_once '../Utility/validation.php';
 	include_once '../config/DAOFactory.php';
 	include_once '../Utente/UtenteMySqlDao.php';
-
+	use Dao\DAOFactory;
 	$daoFactory = DAOFactory::getDao();
 
 	try{

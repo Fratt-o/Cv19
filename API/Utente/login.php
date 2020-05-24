@@ -17,6 +17,8 @@ if ($method == "OPTIONS") {
 }
 include '../config/databaseconnect.php';
 require 'Utente.php';
+use DatabaseCon\Database;
+use Model\Utente;
 
  
 // get database connection

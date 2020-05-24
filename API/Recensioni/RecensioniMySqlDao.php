@@ -4,13 +4,19 @@
     include_once 'RecensioniDao.php';
     require __DIR__."/databaseconnect.php";
 
+    namespace Dao;
+    use Model\Recensioni;
+    use DatabaseCon\Database;
+    use Dao\RecensioniDao;
+    use PDO;
+    use Exception;
     class RecensioniMySqlDao implements RecensioniDao{
 
         private $db;
 
         public function __construct()
          {
-            $this->db = new Database1();
+            $this->db = new Database();
          } 
 
          public function readAllReview($idStruttura){

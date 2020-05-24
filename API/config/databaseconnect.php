@@ -1,4 +1,7 @@
 <?php
+namespace DatabaseCon;
+use PDO;
+use PDOException;
 class Database{
     
 

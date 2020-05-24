@@ -20,7 +20,7 @@
     include_once('../Recensioni/RecensioniMySqlDao.php');
     include_once('../Utility/validation.php');
     include_once('../Utility/jwtUtility.php');
-
+    use Dao\DAOFactory;
     $requestType = $_SERVER['REQUEST_METHOD'];
  
     switch ($requestType) {

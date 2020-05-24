@@ -5,6 +5,9 @@ include_once "../Recensioni/RecensioniDao.php";
 include "../config/DAOFactory.php";
 require __DIR__."/RecensioniMySqlDao.php";
 
+namespace ControllerAdmin;
+use Dao\RecensioniMySqlDao;
+use Exception;
 class ControllerAdmin {
     public $FactoryDao;
     public function __construct(){

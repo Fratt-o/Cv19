@@ -20,7 +20,7 @@
     include 'UtenteMySqlDao.php';
     include '../config/DAOFactory.php';
     include_once '../Utility/jwtUtility.php';
-
+    use Dao\DAOFactory;
     $data = json_decode(file_get_contents("php://input"));
 
     $daoFactory = DAOFactory::getDao();

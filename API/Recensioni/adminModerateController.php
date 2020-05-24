@@ -4,7 +4,7 @@ include_once '../config/databaseconnect.php';
 include_once 'Recensioni.php';
 include_once '../config/DAOFactory.php';
 include_once '../Recensioni/RecensioniMySqlDao.php';
-    
+    use Dao\DAOFactory;
     if($_SESSION['username']==null){
         http_response_code(404);
     }

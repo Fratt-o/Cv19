@@ -1,9 +1,15 @@
 <?php 
 session_start();
-include_once("../config/DAOFactory.php");
+include "http://cv19ing20.altervista.org/Cv19/API/config/DAOFactory.php";
+    namespace ControllerAdmin;
+    use Dao\DAOFactory;
+    use Exception;
     class ControllerAdminStrutture{
         private $dao;
+        
         public function __construct(){
+            
+
             $this->dao = DAOFactory::getDao();
         }
         private function isAdmin(){

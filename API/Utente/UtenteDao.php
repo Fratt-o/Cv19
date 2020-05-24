@@ -1,7 +1,7 @@
 <?php
 
 
-
+    namespace Dao;
     interface UtenteDao {
 
 

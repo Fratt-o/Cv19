@@ -1,5 +1,5 @@
 <?php 
-
+    namespace Dao;
     interface RecensioniDao {
 
 
