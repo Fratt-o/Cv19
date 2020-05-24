@@ -1,23 +1,21 @@
-<?php 
+<?
     namespace Dao;
-    include_once '../Struttura/Struttura.php';
-    include_once '../Struttura/StrutturaMySqlDao.php';
-    include_once '../config/databaseconnect.php';
-    include_once '../Struttura/StrutturaDao.php';
-    include_once 'StrutturaDao';
-    
-    use DatabaseCon\Database;
     use PDO;
     use Model\Struttura;
+    
+    include_once '../Struttura/StrutturaMySqlDao.php';
+   
+    include_once '../Struttura/StrutturaDao.php';
+    include_once 'StrutturaDao.php';
+    include_once 'db.php';
+    include_once 'Struttura.php';
+    
     class StrutturaMySqlDao implements StrutturaDao {
-        private $db;
-        public function __construct()
-         {
-            $this->db = new Database();
-         } 
+          
         public function getStruttureStat(){
+            $db = new Database2();
             $query =  "SELECT `idstruttura`,`nomestruttura`,`mediavoto` FROM `Struttura` ORDER BY `mediavoto` ASC ";
-            $result = $this->db->select($query);
+            $result = $db->select($query);
             $recensioni = array();
             
             if ($result != null){
