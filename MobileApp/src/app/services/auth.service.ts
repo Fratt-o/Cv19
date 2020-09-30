@@ -18,7 +18,7 @@ export class AuthService {
   currentUser: User;
   constructor(private httpClient: HttpClient) { }
 
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return this.currentUser !== undefined;
   }
 
