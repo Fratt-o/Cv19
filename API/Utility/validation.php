@@ -38,7 +38,7 @@
             $result = validation::isEmpty($str);
             if($result != false){
                 if(preg_match( '%^[a-zA-Z0-9]+$%',$str)){
-                    if(strlen($str)>validation::$minString  && strlen($str)< validation::$maxString) return $str;
+                    if(strlen($str)>=validation::$minString  && strlen($str)<= validation::$maxString) return $str;
                 }
             }
             throw new Exception('Invalid String :'.$type);
@@ -46,7 +46,7 @@
         public static function isValidText($txt){
             $result = validation::isEmpty($txt);
             if($result != false){    
-                if(strlen($txt)>validation::$minText  && strlen($txt)< validation::$maxText) return $txt;
+                if(strlen($txt)>=validation::$minText  && strlen($txt)<= validation::$maxText) return $txt;
             }
             throw new Exception('Invalid Text');
         }
