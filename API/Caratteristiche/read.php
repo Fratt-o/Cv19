@@ -16,7 +16,8 @@ if ($method == "OPTIONS") {
 }
 include_once '../config/databaseconnect.php'; 
 include_once '../Caratteristiche/Caratteristica.php'; 
-
+use DatabaseCon\Database;
+use Model\Caratteristica;
 $database = new Database(); 
 $db = $database->getConnection(); 
 $caratteristica = new caratteristica($db);

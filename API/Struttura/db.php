@@ -3,7 +3,7 @@ namespace Dao;
 use PDO;
 use PDOException;
 
-class Database1{
+class Database2{
     
 
     private $host = "localhost";

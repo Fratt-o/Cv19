@@ -1,5 +1,7 @@
 <?php
-
+namespace Model;
+use Exception;
+use PDO;
 class Utente {
     private $conn;
     private $table = "utente";

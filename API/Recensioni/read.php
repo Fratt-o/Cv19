@@ -16,7 +16,8 @@ if ($method == "OPTIONS") {
 }
 include_once '../config/databaseconnect.php'; 
 include_once 'Recensioni.php';
-
+use DatabaseCon\Database;
+use Model\Recensioni;
 try{
     $database = new Database(); 
     $db = $database->getConnection();

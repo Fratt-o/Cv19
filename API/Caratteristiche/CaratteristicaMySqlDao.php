@@ -1,8 +1,12 @@
 <?php 
+    namespace Dao;
     include_once '../config/databaseconnect.php'; 
     include_once '../Caratteristiche/Caratteristica.php';
     include_once '../Caratteristiche/CaratteristicaDao.php';
-
+    
+    use PDO;
+    use DatabaseCon\Database;
+    use Model\Caratteristica;
     class CaratteristicaMySqlDao implements CaratteristicaDao {
 
         public function readAllCaratteristiche()

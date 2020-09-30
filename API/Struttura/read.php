@@ -16,6 +16,8 @@ if ($method == "OPTIONS") {
 }
 include_once '../config/databaseconnect.php'; 
 include_once '../Struttura/Struttura.php'; 
+use DatabaseCon\Database;
+use Model\Struttura;
 
 $database = new Database(); 
 $db = $database->getConnection(); 

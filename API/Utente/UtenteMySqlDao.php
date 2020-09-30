@@ -1,4 +1,11 @@
 <?php 
+
+    namespace Dao;
+    use DatabaseCon\Database;
+    use Exception;
+    use PDO;
+    use Model\Utente;
+
     include_once '../config/databaseconnect.php'; 
     include_once 'Utente.php';
     include_once 'UtenteDao.php';

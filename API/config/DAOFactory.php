@@ -1,7 +1,6 @@
 <?php 
-    include_once '../Caratteristiche/CaratteristicaMySqlDao.php';
-    include_once '../Recensioni/RecensioniMySqlDao.php';
-    include_once '../Utente/UtenteMySqlDao.php';  
+    
+    namespace Dao;
     class DAOFactory {
         
         private $db;
@@ -23,6 +22,9 @@
         }
         public function getUtenteDao(){
             return new UtenteMySqlDao();
+        }
+        public function getStrutturaDao(){
+            return new StrutturaMySqlDao();
         }        
     } 
 

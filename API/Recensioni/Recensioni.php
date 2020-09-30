@@ -1,4 +1,5 @@
 <?php
+namespace Model;
 
 header("Access-Control-Allow-Origin: *");
 

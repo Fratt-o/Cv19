@@ -1,9 +1,15 @@
-<?php 
+<?php
+    namespace Dao;
+
     include_once '../config/databaseconnect.php'; 
     include_once 'Recensioni.php';
     include_once 'RecensioniDao.php';
     require __DIR__."/databaseconnect.php";
 
+    use Model\Recensioni;
+    use Dao\RecensioniDao;
+    use PDO;
+    use Exception;
     class RecensioniMySqlDao implements RecensioniDao{
 
         private $db;
@@ -43,6 +49,25 @@
             $result = $this->db->select($query);
             return $result; 
         }
+
+        public function GetReview(){
+            $query =  "SELECT `idstruttura`,`nomestruttura`,`mediavoto` FROM `Struttura` ORDER BY `mediavoto` ASC ";
+            $result = $this->db->select($query);
+            $recensioni = array();
+            
+            if ($result != null){
+                
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    
+                    $recensione= new Recensioni(" ",$row);
+                    array_push($recensioni,$recensione);
+                }
+            }
+            return $recensioni; 
+        }
+
+
+        
 
         public function deleteReview($id){
 

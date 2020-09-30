@@ -22,7 +22,7 @@
     include '../config/DAOFactory.php';
     include_once '../Utility/jwtUtility.php';
     include_once '../Utility/validation.php';
-
+    use Dao\DAOFactory;
     //$data = json_decode(file_get_contents("php://input"));
     $data = (Object)$_POST;
     $daoFactory = DAOFactory::getDao();

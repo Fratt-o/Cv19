@@ -5,6 +5,8 @@ include_once '../Utente/Utente.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
+use DatabaseCon\Database;
+use Model\Utente;
 
 $database = new Database();
 $db = $database->getConnection();
