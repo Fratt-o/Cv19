@@ -113,6 +113,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Conferma</ion-button>
+    <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons" [disabled]="!form.valid">Conferma</ion-button>
   </form>
 </ion-content>

@@ -54,7 +54,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons">Accedi</ion-button>
+          <ion-button type="submit" expand="block" color="primary" class="RegisterLoginButtons" [disabled]="!form.valid">Accedi</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
