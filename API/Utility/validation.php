@@ -63,7 +63,7 @@
             $result = validation::isEmpty($rating);
             if($result != false){    
                 if(filter_var($rating,FILTER_VALIDATE_FLOAT))
-                    if((validation::$minRating <= $rating) && $rating < validation::$maxRating) return $rating;
+                    if((validation::$minRating <= $rating) && $rating <= validation::$maxRating) return $rating;
             }
             throw new Exception('Invalid Rating');
         }
