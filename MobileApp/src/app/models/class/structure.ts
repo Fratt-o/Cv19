@@ -26,6 +26,7 @@ export class Structure {
         this.province = struttura.provincia;
         this.address = struttura.indirizzo;
         this.reviews = struttura.reviews;
+        this.email = struttura.email;
         this.image = struttura.immagine;
         this.phone = struttura.telefono;
         this.latitude = struttura.latitudine;
